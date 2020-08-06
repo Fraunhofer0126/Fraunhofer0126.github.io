@@ -2970,3 +2970,16 @@ body {
 .popup {
   opacity: 0.85;
 }
+/* webkit, opera, IE9 */
+::selection {
+  background: #000;
+  color: #ff0;
+}
+/* firefox */
+::-moz-selection {
+  background: #06d633;
+  color: #f7f7f7;
+}
+.highlight *::selection {
+  background: #000;
+}
