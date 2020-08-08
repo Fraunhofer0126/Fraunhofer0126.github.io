@@ -21,7 +21,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"fraunhofer0126.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+    var CONFIG = {"hostname":"fraunhofer0126.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
   <meta name="description" content="难逃 沦为利己主义者">
@@ -122,6 +122,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -155,16 +156,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
-        <li class="menu-item menu-item-commonweal">
-
-    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
-
-  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
           
@@ -204,20 +227,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -286,10 +309,10 @@
       <div class="post-body">
           <div class="tag-cloud">
             <div class="tag-cloud-title">
-              11 tags in total
+              13 tags in total
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/DP/" style="font-size: 30px;" class="tag-cloud-10">DP</a> <a href="/tags/blog/" style="font-size: 21px;" class="tag-cloud-5">blog</a> <a href="/tags/dfs/" style="font-size: 12px;" class="tag-cloud-0">dfs</a> <a href="/tags/dijkstra/" style="font-size: 12px;" class="tag-cloud-0">dijkstra</a> <a href="/tags/markdown/" style="font-size: 12px;" class="tag-cloud-0">markdown</a> <a href="/tags/%E5%85%AB%E7%9A%87%E5%90%8E/" style="font-size: 12px;" class="tag-cloud-0">八皇后</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 12px;" class="tag-cloud-0">并查集</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" style="font-size: 12px;" class="tag-cloud-0">最短路</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 12px;" class="tag-cloud-0">线段树</a> <a href="/tags/%E8%83%8C%E5%8C%85/" style="font-size: 30px;" class="tag-cloud-10">背包</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 12px;" class="tag-cloud-0">递归</a>
+              <a href="/tags/DP/" style="font-size: 30px;" class="tag-cloud-10">DP</a> <a href="/tags/blog/" style="font-size: 18px;" class="tag-cloud-3">blog</a> <a href="/tags/dfs/" style="font-size: 12px;" class="tag-cloud-0">dfs</a> <a href="/tags/dijkstra/" style="font-size: 12px;" class="tag-cloud-0">dijkstra</a> <a href="/tags/lcs/" style="font-size: 12px;" class="tag-cloud-0">lcs</a> <a href="/tags/lis/" style="font-size: 12px;" class="tag-cloud-0">lis</a> <a href="/tags/markdown/" style="font-size: 12px;" class="tag-cloud-0">markdown</a> <a href="/tags/%E5%85%AB%E7%9A%87%E5%90%8E/" style="font-size: 12px;" class="tag-cloud-0">八皇后</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 12px;" class="tag-cloud-0">并查集</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" style="font-size: 12px;" class="tag-cloud-0">最短路</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 12px;" class="tag-cloud-0">线段树</a> <a href="/tags/%E8%83%8C%E5%8C%85/" style="font-size: 24px;" class="tag-cloud-7">背包</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 12px;" class="tag-cloud-0">递归</a>
             </div>
           </div>
         
@@ -463,6 +486,10 @@
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
