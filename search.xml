@@ -114,20 +114,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Mardown语法教程</title>
-    <url>/2020/08/03/Mardown%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<blockquote>
-<h3 id="转载-点击阅读原文"><a href="#转载-点击阅读原文" class="headerlink" title="转载 点击阅读原文"></a>转载 <a href="https://www.jianshu.com/p/ebe52d2d468f" title="原文链接">点击阅读原文</a></h3></blockquote>
-]]></content>
-      <categories>
-        <category>Reference</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>POJ1182</title>
     <url>/2020/08/04/POJ1182/</url>
     <content><![CDATA[<h1 id="食物链"><a href="#食物链" class="headerlink" title="食物链"></a>食物链</h1><p>动物王国中有三类动物A,B,C，这三类动物的食物链构成了有趣的环形。A吃B， B吃C，C吃A。<br/><br>现有N个动物，以1－N编号。每个动物都是A,B,C中的一种，但是我们并不知道它到底是哪一种。<br/><br>有人用两种说法对这N个动物所构成的食物链关系进行描述：<br/><br>第一种说法是”1 X Y”，表示X和Y是同类。<br/><br>第二种说法是”2 X Y”，表示X吃Y。<br/><br>此人对N个动物，用上述两种说法，一句接一句地说出K句话，这K句话有的是真的，有的是假的。当一句话满足下列三条之一时，这句话就是假话，否则就是真话。<br/><br>1） 当前的话与前面的某些真的话冲突，就是假话；<br/><br>2） 当前的话中X或Y比N大，就是假话；<br/><br>3） 当前的话表示X吃X，就是假话。<br/><br>你的任务是根据给定的N（1 &lt;= N &lt;= 50,000）和K句话（0 &lt;= K &lt;= 100,000），输出假话的总数。<br/></p>
@@ -157,6 +143,61 @@
       </categories>
       <tags>
         <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mardown语法教程</title>
+    <url>/2020/08/03/Mardown%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<blockquote>
+<h3 id="转载-点击阅读原文"><a href="#转载-点击阅读原文" class="headerlink" title="转载 点击阅读原文"></a>转载 <a href="https://www.jianshu.com/p/ebe52d2d468f" title="原文链接">点击阅读原文</a></h3></blockquote>
+]]></content>
+      <categories>
+        <category>Reference</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>八皇后算法</title>
+    <url>/2020/08/04/%E5%85%AB%E7%9A%87%E5%90%8E%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<blockquote>
+<h1 id="转载至-点击查看原博客"><a href="#转载至-点击查看原博客" class="headerlink" title="转载至 点击查看原博客"></a>转载至 <a href="https://blog.csdn.net/qq_42552533/article/details/86684045" title="原博客链接">点击查看原博客</a></h1></blockquote>
+<a id="more"></a>
+
+<p><strong>为了理解“递归回溯”的思想，我们不妨先将4位皇后打入冷宫，留下剩下的4位安排进4x4的格子中且不能互相打架，有多少种安排方法呢？现在我们把第一个皇后放在第一个格子，被涂黑的地方是不能放皇后的:</strong><br/></p>
+<p><img src="https://img-blog.csdnimg.cn/20190128225239203.png#pic_center"></p>
+<p><strong>第二行的皇后只能放在第三格或第四格，比如我们放在第三格:</strong> <br/></p>
+<p><img src="https://img-blog.csdnimg.cn/20190128225341886.png#pic_center" alt="放第二个皇后"></p>
+<p><strong>这样一来前面两位皇后已经把第三行全部锁死了，第三位皇后无论放在第三行的哪里都难逃被吃掉的厄运。于是在第一个皇后位于第一格，第二个皇后位于第三格的情况下此问题无解。所以我们只能返回上一步，来给2号皇后换个位置:</strong><br/></p>
+<p><img src="https://img-blog.csdnimg.cn/20190128225441858.png#pic_center" alt="给第二个皇后换位置"></p>
+<p><strong>此时，第三个皇后只有一个位置可选。当第三个皇后占据第三行蓝色空位时，第四行皇后无路可走，于是发生错误，则返回上层调整3号皇后，而3号皇后也别无可去，继续返回上层调整2号皇后，而2号皇后已然无路可去，则再继续返回上层调整1号皇后，于是1号皇后往后移一格位置如下，再继续往下安排:</strong><br/><br><img src="https://img-blog.csdnimg.cn/20190128225624834.png#pic_center"></p>
+<h2 id="核心代码："><a href="#核心代码：" class="headerlink" title="核心代码："></a>核心代码：</h2><span>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EightQueen</span><span class="params">( <span class="keyword">int</span> row )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> col;</span><br><span class="line">    <span class="keyword">if</span>( row&gt;<span class="number">7</span> )                       <span class="comment">//如果遍历完八行都找到放置皇后的位置则打印</span></span><br><span class="line">    &#123;</span><br><span class="line">        Print();                       <span class="comment">//打印八皇后的解 </span></span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>( col=<span class="number">0</span>; col &lt; <span class="number">8</span>; col++ )        <span class="comment">//回溯，递归</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( notDanger( row, col ) )    <span class="comment">// 判断是否危险</span></span><br><span class="line">        &#123;</span><br><span class="line">            chess[row][col]=<span class="number">1</span>;</span><br><span class="line">            EightQueen(row+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">            chess[row][col]=<span class="number">0</span>;           <span class="comment">//清零，以免回溯时出现脏数据</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</span>
+
+<h2 id="我们来重点看一下这段代码："><a href="#我们来重点看一下这段代码：" class="headerlink" title="我们来重点看一下这段代码："></a>我们来重点看一下这段代码：</h2><blockquote>
+第一次进来，row=0，意思是要在第一行摆皇后，只要传进来的row参数不是8，表明还没出结果，就都不会走if里面的return，那么就进入到for循环里面，col从0开始，即第一列。此时第一行第一列肯定合乎要求（即notDanger方法肯定通过），能放下皇后，因为还没有任何其他皇后来干扰。<br/>
+关键是notDanger方法通过了之后，在if里面又会调用一下自己（即递归），row加了1，表示摆第二行的皇后了。
+第二行的皇后在走for循环的时候，分两种情况，第一种情况：for循环没走到头时就有通过notDanger方法的了，那么这样就顺理成章地往下走再调用一下自己（即再往下递归），row再加1（即摆第三行的皇后了，以此类推）。第二种情况：for循环走到头了都没有通过notDanger方法的，说明第二行根本一个皇后都摆不了，也触发不了递归，下面的第三行等等后面的就更不用提了，此时控制第一行皇后位置的for循环col加1，即第一行的皇后往后移一格，即摆在第一行第二列的位置上，然后再往下走，重复上述逻辑。<br/>
+注意，一定要添加清零的代码，它只有在皇后摆不下去的时候会执行清0的动作（避免脏数据干扰），如果皇后摆放很顺利的话从头到尾是不会走这个请0的动作的，因为已经提前走if里面的return方法结束了。<br/>
+总之，这段核心代码很绕，原理一定要想通，想个十几二十遍差不多就能理解其中的原理了，递归回溯的思想也就不言而喻了。八皇后问题一共有92种情况
+</blockquote>
+
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><span>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> chess[<span class="number">8</span>][<span class="number">8</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">notDanger</span><span class="params">( <span class="keyword">int</span> row, <span class="keyword">int</span> col )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,k;</span><br><span class="line">    <span class="comment">// 判断列方向</span></span><br><span class="line">    <span class="keyword">for</span>( i=<span class="number">0</span>; i &lt; <span class="number">8</span>; i++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( chess[i][col]==<span class="number">1</span> )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 判断左对角线 </span></span><br><span class="line">    <span class="keyword">for</span>( i=row, k=col; i&gt;=<span class="number">0</span> &amp;&amp; k&gt;=<span class="number">0</span>; i--, k-- )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(chess[i][k]==<span class="number">1</span>  )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 判断右对角线 </span></span><br><span class="line">    <span class="keyword">for</span>( i=row, k=col; i&gt;=<span class="number">0</span> &amp;&amp; k&lt;<span class="number">8</span>; i--, k++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(chess[i][k]==<span class="number">1</span>  )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span>          <span class="comment">//打印结果 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> row,col;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;第 %d 种\n&quot;</span>, count+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>( row=<span class="number">0</span>; row &lt; <span class="number">8</span>; row++ )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>( col=<span class="number">0</span>; col&lt; <span class="number">8</span>; col++ )</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(chess[row][col]==<span class="number">1</span>)        <span class="comment">//皇后用‘0’表示</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;0 &quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;# &quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EightQueen</span><span class="params">( <span class="keyword">int</span> row )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> col;</span><br><span class="line">    <span class="keyword">if</span>( row&gt;<span class="number">7</span> )                       <span class="comment">//如果遍历完八行都找到放置皇后的位置则打印</span></span><br><span class="line">    &#123;</span><br><span class="line">        Print();                       <span class="comment">//打印八皇后的解 </span></span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>( col=<span class="number">0</span>; col &lt; <span class="number">8</span>; col++ )        <span class="comment">//回溯，递归</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( notDanger( row, col ) )    <span class="comment">// 判断是否危险</span></span><br><span class="line">        &#123;</span><br><span class="line">            chess[row][col]=<span class="number">1</span>;</span><br><span class="line">            EightQueen(row+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">            chess[row][col]=<span class="number">0</span>;           <span class="comment">//清零，以免回溯时出现脏数据</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    EightQueen(<span class="number">0</span>);        </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;总共有 %d 种解决方法!\n\n&quot;</span>, count);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>]]></content>
+      <categories>
+        <category>算法竞赛</category>
+      </categories>
+      <tags>
+        <tag>八皇后</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -264,47 +305,6 @@ pearch<br/>
       <tags>
         <tag>DP</tag>
         <tag>lis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>八皇后算法</title>
-    <url>/2020/08/04/%E5%85%AB%E7%9A%87%E5%90%8E%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<blockquote>
-<h1 id="转载至-点击查看原博客"><a href="#转载至-点击查看原博客" class="headerlink" title="转载至 点击查看原博客"></a>转载至 <a href="https://blog.csdn.net/qq_42552533/article/details/86684045" title="原博客链接">点击查看原博客</a></h1></blockquote>
-<a id="more"></a>
-
-<p><strong>为了理解“递归回溯”的思想，我们不妨先将4位皇后打入冷宫，留下剩下的4位安排进4x4的格子中且不能互相打架，有多少种安排方法呢？现在我们把第一个皇后放在第一个格子，被涂黑的地方是不能放皇后的:</strong><br/></p>
-<p><img src="https://img-blog.csdnimg.cn/20190128225239203.png#pic_center"></p>
-<p><strong>第二行的皇后只能放在第三格或第四格，比如我们放在第三格:</strong> <br/></p>
-<p><img src="https://img-blog.csdnimg.cn/20190128225341886.png#pic_center" alt="放第二个皇后"></p>
-<p><strong>这样一来前面两位皇后已经把第三行全部锁死了，第三位皇后无论放在第三行的哪里都难逃被吃掉的厄运。于是在第一个皇后位于第一格，第二个皇后位于第三格的情况下此问题无解。所以我们只能返回上一步，来给2号皇后换个位置:</strong><br/></p>
-<p><img src="https://img-blog.csdnimg.cn/20190128225441858.png#pic_center" alt="给第二个皇后换位置"></p>
-<p><strong>此时，第三个皇后只有一个位置可选。当第三个皇后占据第三行蓝色空位时，第四行皇后无路可走，于是发生错误，则返回上层调整3号皇后，而3号皇后也别无可去，继续返回上层调整2号皇后，而2号皇后已然无路可去，则再继续返回上层调整1号皇后，于是1号皇后往后移一格位置如下，再继续往下安排:</strong><br/><br><img src="https://img-blog.csdnimg.cn/20190128225624834.png#pic_center"></p>
-<h2 id="核心代码："><a href="#核心代码：" class="headerlink" title="核心代码："></a>核心代码：</h2><span>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EightQueen</span><span class="params">( <span class="keyword">int</span> row )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> col;</span><br><span class="line">    <span class="keyword">if</span>( row&gt;<span class="number">7</span> )                       <span class="comment">//如果遍历完八行都找到放置皇后的位置则打印</span></span><br><span class="line">    &#123;</span><br><span class="line">        Print();                       <span class="comment">//打印八皇后的解 </span></span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>( col=<span class="number">0</span>; col &lt; <span class="number">8</span>; col++ )        <span class="comment">//回溯，递归</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( notDanger( row, col ) )    <span class="comment">// 判断是否危险</span></span><br><span class="line">        &#123;</span><br><span class="line">            chess[row][col]=<span class="number">1</span>;</span><br><span class="line">            EightQueen(row+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">            chess[row][col]=<span class="number">0</span>;           <span class="comment">//清零，以免回溯时出现脏数据</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-</span>
-
-<h2 id="我们来重点看一下这段代码："><a href="#我们来重点看一下这段代码：" class="headerlink" title="我们来重点看一下这段代码："></a>我们来重点看一下这段代码：</h2><blockquote>
-第一次进来，row=0，意思是要在第一行摆皇后，只要传进来的row参数不是8，表明还没出结果，就都不会走if里面的return，那么就进入到for循环里面，col从0开始，即第一列。此时第一行第一列肯定合乎要求（即notDanger方法肯定通过），能放下皇后，因为还没有任何其他皇后来干扰。<br/>
-关键是notDanger方法通过了之后，在if里面又会调用一下自己（即递归），row加了1，表示摆第二行的皇后了。
-第二行的皇后在走for循环的时候，分两种情况，第一种情况：for循环没走到头时就有通过notDanger方法的了，那么这样就顺理成章地往下走再调用一下自己（即再往下递归），row再加1（即摆第三行的皇后了，以此类推）。第二种情况：for循环走到头了都没有通过notDanger方法的，说明第二行根本一个皇后都摆不了，也触发不了递归，下面的第三行等等后面的就更不用提了，此时控制第一行皇后位置的for循环col加1，即第一行的皇后往后移一格，即摆在第一行第二列的位置上，然后再往下走，重复上述逻辑。<br/>
-注意，一定要添加清零的代码，它只有在皇后摆不下去的时候会执行清0的动作（避免脏数据干扰），如果皇后摆放很顺利的话从头到尾是不会走这个请0的动作的，因为已经提前走if里面的return方法结束了。<br/>
-总之，这段核心代码很绕，原理一定要想通，想个十几二十遍差不多就能理解其中的原理了，递归回溯的思想也就不言而喻了。八皇后问题一共有92种情况
-</blockquote>
-
-
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><span>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> chess[<span class="number">8</span>][<span class="number">8</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">notDanger</span><span class="params">( <span class="keyword">int</span> row, <span class="keyword">int</span> col )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,k;</span><br><span class="line">    <span class="comment">// 判断列方向</span></span><br><span class="line">    <span class="keyword">for</span>( i=<span class="number">0</span>; i &lt; <span class="number">8</span>; i++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( chess[i][col]==<span class="number">1</span> )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 判断左对角线 </span></span><br><span class="line">    <span class="keyword">for</span>( i=row, k=col; i&gt;=<span class="number">0</span> &amp;&amp; k&gt;=<span class="number">0</span>; i--, k-- )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(chess[i][k]==<span class="number">1</span>  )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 判断右对角线 </span></span><br><span class="line">    <span class="keyword">for</span>( i=row, k=col; i&gt;=<span class="number">0</span> &amp;&amp; k&lt;<span class="number">8</span>; i--, k++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(chess[i][k]==<span class="number">1</span>  )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span>          <span class="comment">//打印结果 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> row,col;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;第 %d 种\n&quot;</span>, count+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>( row=<span class="number">0</span>; row &lt; <span class="number">8</span>; row++ )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>( col=<span class="number">0</span>; col&lt; <span class="number">8</span>; col++ )</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(chess[row][col]==<span class="number">1</span>)        <span class="comment">//皇后用‘0’表示</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;0 &quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;# &quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">EightQueen</span><span class="params">( <span class="keyword">int</span> row )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> col;</span><br><span class="line">    <span class="keyword">if</span>( row&gt;<span class="number">7</span> )                       <span class="comment">//如果遍历完八行都找到放置皇后的位置则打印</span></span><br><span class="line">    &#123;</span><br><span class="line">        Print();                       <span class="comment">//打印八皇后的解 </span></span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>( col=<span class="number">0</span>; col &lt; <span class="number">8</span>; col++ )        <span class="comment">//回溯，递归</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( notDanger( row, col ) )    <span class="comment">// 判断是否危险</span></span><br><span class="line">        &#123;</span><br><span class="line">            chess[row][col]=<span class="number">1</span>;</span><br><span class="line">            EightQueen(row+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">            chess[row][col]=<span class="number">0</span>;           <span class="comment">//清零，以免回溯时出现脏数据</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    EightQueen(<span class="number">0</span>);        </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;总共有 %d 种解决方法!\n\n&quot;</span>, count);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</span>]]></content>
-      <categories>
-        <category>算法竞赛</category>
-      </categories>
-      <tags>
-        <tag>八皇后</tag>
-        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
