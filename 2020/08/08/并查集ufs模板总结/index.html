@@ -24,21 +24,20 @@
     var CONFIG = {"hostname":"fraunhofer0126.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="线性dp+单调队列优化">
+  <meta name="description" content="并查集的查找、合并、集合数、“感染人数”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[习题]DP+单调队列 LOJ10180">
-<meta property="og:url" content="https://fraunhofer0126.github.io/2020/08/08/[%E4%B9%A0%E9%A2%98]DP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/index.html">
+<meta property="og:title" content="并查集ufs模板总结">
+<meta property="og:url" content="https://fraunhofer0126.github.io/2020/08/08/%E5%B9%B6%E6%9F%A5%E9%9B%86ufs%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="康桉的个人博(bo)客(ki)">
-<meta property="og:description" content="线性dp+单调队列优化">
+<meta property="og:description" content="并查集的查找、合并、集合数、“感染人数”">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-08T07:41:29.000Z">
-<meta property="article:modified_time" content="2020-08-08T09:47:55.309Z">
+<meta property="article:published_time" content="2020-08-08T11:41:41.000Z">
+<meta property="article:modified_time" content="2020-08-08T12:39:26.567Z">
 <meta property="article:author" content="Fraunhofer0126">
-<meta property="article:tag" content="DP">
-<meta property="article:tag" content="单调队列">
+<meta property="article:tag" content="并查集">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://fraunhofer0126.github.io/2020/08/08/[%E4%B9%A0%E9%A2%98]DP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/">
+<link rel="canonical" href="https://fraunhofer0126.github.io/2020/08/08/%E5%B9%B6%E6%9F%A5%E9%9B%86ufs%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/">
 
 
 <script class="page-configurations">
@@ -51,7 +50,7 @@
   };
 </script>
 
-  <title>[习题]DP+单调队列 LOJ10180 | 康桉的个人博(bo)客(ki)</title>
+  <title>并查集ufs模板总结 | 康桉的个人博(bo)客(ki)</title>
   
 
 
@@ -213,7 +212,7 @@
       
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%83%BD%E7%81%AB%E4%BC%A0%E9%80%92"><span class="nav-number">1.</span> <span class="nav-text">烽火传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">1.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output"><span class="nav-number">1.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.4.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E6%80%9D"><span class="nav-number">1.5.</span> <span class="nav-text">反思</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96%E4%BA%86%E5%A4%8D%E6%9D%82%E5%BA%A6O-n-%E5%90%A6%E5%88%99%E4%B8%A4%E9%87%8D%E5%BE%AA%E7%8E%AFO-mn"><span class="nav-number">1.6.</span> <span class="nav-text">使用单调队列优化了复杂度O(n),否则两重循环O(mn)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AB%E5%B0%BE"><span class="nav-number">2.</span> <span class="nav-text">末尾</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">基础函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AB%E5%B0%BE"><span class="nav-number">2.</span> <span class="nav-text">末尾</span></a></li></ol></div>
       </section>
       <!--/noindex-->
       
@@ -291,7 +290,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://fraunhofer0126.github.io/2020/08/08/[%E4%B9%A0%E9%A2%98]DP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/">
+    <link itemprop="mainEntityOfPage" href="https://fraunhofer0126.github.io/2020/08/08/%E5%B9%B6%E6%9F%A5%E9%9B%86ufs%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -306,7 +305,7 @@
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          [习题]DP+单调队列 LOJ10180
+          并查集ufs模板总结
         </h1>
 
         <div class="post-meta">
@@ -317,7 +316,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-08-08 15:41:29 / Modified: 17:47:55" itemprop="dateCreated datePublished" datetime="2020-08-08T15:41:29+08:00">2020-08-08</time>
+              <time title="Created: 2020-08-08 19:41:41 / Modified: 20:39:26" itemprop="dateCreated datePublished" datetime="2020-08-08T19:41:41+08:00">2020-08-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -327,10 +326,14 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">算法竞赛</span></a>
                 </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+                </span>
             </span>
 
           
-            <span id="/2020/08/08/%5B%E4%B9%A0%E9%A2%98%5DDP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/" class="post-meta-item leancloud_visitors" data-flag-title="[习题]DP+单调队列 LOJ10180" title="Views">
+            <span id="/2020/08/08/%E5%B9%B6%E6%9F%A5%E9%9B%86ufs%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/" class="post-meta-item leancloud_visitors" data-flag-title="并查集ufs模板总结" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -345,13 +348,13 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/08/08/%5B%E4%B9%A0%E9%A2%98%5DDP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/08/%5B%E4%B9%A0%E9%A2%98%5DDP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/08/08/%E5%B9%B6%E6%9F%A5%E9%9B%86ufs%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/08/%E5%B9%B6%E6%9F%A5%E9%9B%86ufs%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-            <div class="post-description">线性dp+单调队列优化</div>
+            <div class="post-description">并查集的查找、合并、集合数、“感染人数”</div>
 
         </div>
       </header>
@@ -361,49 +364,34 @@
     
     <div class="post-body" itemprop="articleBody">
         <a id="more"></a>
-
-<h1 id="烽火传递"><a href="#烽火传递" class="headerlink" title="烽火传递"></a>烽火传递</h1><p>烽火台是重要的军事防御设施，一般建在交通要道或险要处。一旦有军情发生，则白天用浓烟，晚上有火光传递军情。</p>
-<p>在某两个城市之间有 n 座烽火台，每个烽火台发出信号都有一定的代价。为了使情报准确传递，在连续 m 个烽火台中至少要有一个发出信号。现在输入 n,m 和每个烽火台的代价，请计算总共最少的代价在两城市之间来准确传递情报。</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>第一行是 n,m，表示 n 个烽火台和连续烽火台数 m；<br>第二行 n 个整数表示每个烽火台的代价 ai。</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>输出仅一个整数，表示最小代价。</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><blockquote>
-5 3<br/>
-1 2 5 6 2
-</blockquote>
-
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><blockquote>
-4
-</blockquote>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,l,r,a[N],f[N],q[N&lt;&lt;<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
-
-<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><p>本来做法</p>
-<ol>
-<li>f[i]表示1-i烽火台的最小代价<br>转移方程是这样<blockquote>
-f[i] = min(f[i], f[j] + a[k])<br/>
-i-2m+1 <= j <= i-m<br/>
-i-m+1 <= k <= j+m
-</blockquote></li>
-<li>哎但这样当前状态是不确定的，也就没有所谓“状态转移”<br/><br>网上搬运的代码<br/><br>考虑f[i]是第i个烽火台点火时，1-i烽火台最小代价<blockquote>
-<p>10 3<br/><br>1 2 5 6 2 1 2 5 6 2<br/><br>f[1] = f[0] + a[1] = 0 + a[1] = 1点第一个台子，最小代价就是它本身<br/><br>f[2] = 2 <br/><br>f[3] = 5 <br/><br>f[4] = 6 + 1 = 7 <br/><br>f[5] = 2 + 2 = 4 <br/><br>f[6] = 1 + 4 = 5 <br/><br>f[7] = 2 + 4 = 6 <br/><br>f[8] = 5 + 4 = 9 <br/><br>f[9] = 6 + 5 = 11 <br/><br>f[10] = 2 + 6 = 8 <br/></p>
-</blockquote>
-</li>
-</ol>
-<p><strong>感觉其实有点像lis问题，也是在前面的一定区间内寻找已经解决掉的子问题的最优解</strong></p>
-<blockquote>
-f[i] = min(f[j]) + a[i]<br/>
-i-m <= j <= i-1 
-</blockquote>
-
-
-<h2 id="使用单调队列优化了复杂度O-n-否则两重循环O-mn"><a href="#使用单调队列优化了复杂度O-n-否则两重循环O-mn" class="headerlink" title="使用单调队列优化了复杂度O(n),否则两重循环O(mn)"></a>使用单调队列优化了复杂度O(n),否则两重循环O(mn)</h2><p><strong>这道题并不能用线段树优化，因为树是建在已知数组上的，而求的是f[j]的最小值，f在实时更新，而建树的复杂度是O(2^n)，不可能更新一次建一次</strong><br/></p>
-<p>f[q[l]]代表[i-m,i-1]的f的最小值<br/></p>
-<p>q[l]不能与a[i]重合，所以转移状态应该在入队列之前<br/><br>用数组模拟队列nb</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">()</span></span>&#123;</span><br><span class="line">    l = r = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>( ;l &lt; r &amp;&amp; i - q[l] &gt; m; l++);</span><br><span class="line">        f[i] = f[q[l]] + a[i];</span><br><span class="line">        <span class="keyword">for</span>( ;l &lt; r &amp;&amp; f[q[r]] &gt; f[i]; r--);</span><br><span class="line">        q[++r] = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>并查集这个东西很方便“集合”的查询、合并、树的路径压缩</strong><br><strong>但是它并不方便从树根向叶的查询，路径压缩也会破坏树的结构</strong></p>
 <ul>
-<li>最后答案在区间[n-m+1, n]里找</li>
+<li>用数组ufs[i]表示每个节点i的根是谁，根的根是自己</li>
+<li>用数组sum[i]表示当节点i作为根时，整个(子)树上的节点个数</li>
+<li>数组set自定义的..记录下有多少个集合</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line"></span><br><span class="line">    dfs();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0x7fffffff</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n - m + <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        ans = min(ans, f[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 30010</span></span><br><span class="line"><span class="keyword">int</span> sum[MAXN];    <span class="comment">//集合总数</span></span><br><span class="line"><span class="keyword">int</span> ufs[MAXN];    <span class="comment">//并查集</span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">set</span>[MAXN];</span><br></pre></td></tr></table></figure>
+
+<h1 id="基础函数"><a href="#基础函数" class="headerlink" title="基础函数"></a>基础函数</h1><ul>
+<li>把每个节点的根先设置为自己，而且每个节点所在子树的节点数先设置为1</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">(<span class="keyword">int</span> n)</span>    <span class="comment">//初始化</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        ufs[i] = i;</span><br><span class="line">        sum[i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>没找到根节点,就递归把a连到a的根节点上</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetRoot</span><span class="params">(<span class="keyword">int</span> a)</span>    <span class="comment">//获得a的根节点。路径压缩</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(ufs[a]!=a)&#123;    </span><br><span class="line">        ufs[a] = GetRoot(ufs[a]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ufs[a];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>两根相等辣没事，两根不等就把<strong>两根</strong>连在一起</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span>    <span class="comment">//合并a和b的集合</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = GetRoot(a);</span><br><span class="line">    <span class="keyword">int</span> y = GetRoot(b);</span><br><span class="line">    <span class="keyword">if</span>(x!=y)&#123;</span><br><span class="line">        ufs[y] = x;</span><br><span class="line">        sum[x] += sum[y];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>不重要的main函数</li>
+<li>有多个cases在main中别忘了预处理之类的</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T, m, n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(sum, <span class="number">0</span>, <span class="keyword">sizeof</span>(sum));</span><br><span class="line">        <span class="built_in">memset</span>(ufs, <span class="number">0</span>, <span class="keyword">sizeof</span>(ufs));</span><br><span class="line">        <span class="built_in">memset</span>(<span class="built_in">set</span>, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="built_in">set</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1>
     </div>
@@ -435,7 +423,7 @@ i-m <= j <= i-1
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://fraunhofer0126.github.io/2020/08/08/[%E4%B9%A0%E9%A2%98]DP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/" title="[习题]DP+单调队列 LOJ10180">https://fraunhofer0126.github.io/2020/08/08/[习题]DP+单调队列LOJ10180/</a>
+    <a href="https://fraunhofer0126.github.io/2020/08/08/%E5%B9%B6%E6%9F%A5%E9%9B%86ufs%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/" title="并查集ufs模板总结">https://fraunhofer0126.github.io/2020/08/08/并查集ufs模板总结/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -465,8 +453,7 @@ i-m <= j <= i-1
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/DP/" rel="tag"># DP</a>
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag"># 单调队列</a>
+              <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag"># 并查集</a>
           </div>
 
         
@@ -475,13 +462,10 @@ i-m <= j <= i-1
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/08/lis%E9%97%AE%E9%A2%98/" rel="prev" title="lis问题">
-      <i class="fa fa-chevron-left"></i> lis问题
+    <a href="/2020/08/08/%5B%E4%B9%A0%E9%A2%98%5DDP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/" rel="prev" title="[习题]DP+单调队列 LOJ10180">
+      <i class="fa fa-chevron-left"></i> [习题]DP+单调队列 LOJ10180
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/08/08/%E5%B9%B6%E6%9F%A5%E9%9B%86ufs%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/" rel="next" title="并查集ufs模板总结">
-      并查集ufs模板总结 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
