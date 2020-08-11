@@ -24,22 +24,21 @@
     var CONFIG = {"hostname":"fraunhofer0126.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="dijkstra, 最短路">
+  <meta name="description" content="最近公共祖先">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[习题]最短路HDU6797">
-<meta property="og:url" content="https://fraunhofer0126.github.io/2020/08/03/[%E4%B9%A0%E9%A2%98]%E6%9C%80%E7%9F%AD%E8%B7%AFHDU6797/index.html">
+<meta property="og:title" content="LCA模板总结">
+<meta property="og:url" content="https://fraunhofer0126.github.io/2020/08/10/LCA%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="康桉的个人博(bo)客(ki)">
-<meta property="og:description" content="dijkstra, 最短路">
+<meta property="og:description" content="最近公共祖先">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-03T14:54:45.000Z">
-<meta property="article:modified_time" content="2020-08-08T09:47:18.209Z">
+<meta property="article:published_time" content="2020-08-10T10:12:46.000Z">
+<meta property="article:modified_time" content="2020-08-10T10:14:36.651Z">
 <meta property="article:author" content="Fraunhofer0126">
-<meta property="article:tag" content="dijkstra">
-<meta property="article:tag" content="最短路">
-<meta property="article:tag" content="dfs">
+<meta property="article:tag" content="LCA">
+<meta property="article:tag" content="倍增算法">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://fraunhofer0126.github.io/2020/08/03/[%E4%B9%A0%E9%A2%98]%E6%9C%80%E7%9F%AD%E8%B7%AFHDU6797/">
+<link rel="canonical" href="https://fraunhofer0126.github.io/2020/08/10/LCA%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/">
 
 
 <script class="page-configurations">
@@ -52,7 +51,7 @@
   };
 </script>
 
-  <title>[习题]最短路HDU6797 | 康桉的个人博(bo)客(ki)</title>
+  <title>LCA模板总结 | 康桉的个人博(bo)客(ki)</title>
   
 
 
@@ -214,7 +213,7 @@
       
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tokitsukaze-and-Rescue"><span class="nav-number">1.</span> <span class="nav-text">Tokitsukaze and Rescue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.0.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.0.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.0.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.0.4.</span> <span class="nav-text">Sample Output</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">C++代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AB%E5%B0%BE"><span class="nav-number">1.2.</span> <span class="nav-text">末尾</span></a></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AB%E5%B0%BE"><span class="nav-number">1.</span> <span class="nav-text">末尾</span></a></li></ol></div>
       </section>
       <!--/noindex-->
       
@@ -294,7 +293,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://fraunhofer0126.github.io/2020/08/03/[%E4%B9%A0%E9%A2%98]%E6%9C%80%E7%9F%AD%E8%B7%AFHDU6797/">
+    <link itemprop="mainEntityOfPage" href="https://fraunhofer0126.github.io/2020/08/10/LCA%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -309,7 +308,7 @@
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          [习题]最短路HDU6797
+          LCA模板总结
         </h1>
 
         <div class="post-meta">
@@ -318,16 +317,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-08-03 22:54:45" itemprop="dateCreated datePublished" datetime="2020-08-03T22:54:45+08:00">2020-08-03</time>
+              <time title="Created: 2020-08-10 18:12:46 / Modified: 18:14:36" itemprop="dateCreated datePublished" datetime="2020-08-10T18:12:46+08:00">2020-08-10</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-08 17:47:18" itemprop="dateModified" datetime="2020-08-08T17:47:18+08:00">2020-08-08</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -336,14 +329,10 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">算法竞赛</span></a>
                 </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E6%90%9C%E7%B4%A2/" itemprop="url" rel="index"><span itemprop="name">搜索</span></a>
-                </span>
             </span>
 
           
-            <span id="/2020/08/03/%5B%E4%B9%A0%E9%A2%98%5D%E6%9C%80%E7%9F%AD%E8%B7%AFHDU6797/" class="post-meta-item leancloud_visitors" data-flag-title="[习题]最短路HDU6797" title="Views">
+            <span id="/2020/08/10/LCA%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/" class="post-meta-item leancloud_visitors" data-flag-title="LCA模板总结" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -358,13 +347,13 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/08/03/%5B%E4%B9%A0%E9%A2%98%5D%E6%9C%80%E7%9F%AD%E8%B7%AFHDU6797/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/03/%5B%E4%B9%A0%E9%A2%98%5D%E6%9C%80%E7%9F%AD%E8%B7%AFHDU6797/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/08/10/LCA%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/10/LCA%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-            <div class="post-description">dijkstra, 最短路</div>
+            <div class="post-description">最近公共祖先</div>
 
         </div>
       </header>
@@ -373,67 +362,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Tokitsukaze-and-Rescue"><a href="#Tokitsukaze-and-Rescue" class="headerlink" title="Tokitsukaze and Rescue"></a>Tokitsukaze and Rescue</h1><a id="more"></a>
-<p>Princess CJB has lived almost her entire life in the isolated town of Ertona, where CJB uses her unique ability to recognize where crystals of materials are buried. By way of a fateful encounter, CJB learns of the Alchemy Exam and decides to take her first step into the outside world, setting off on a grand journey to become a certified alchemist and discover the mysteries that life has to offer!</p>
-<p>In order to take part in the Alchemy Exam, CJB goes to the Reisenberg town without any partners. But the kingdom Adalet is unbelievably enormous so that there are many hidden risks. Claris, a powerful evil magician, wants to monopolize CJB for the extraordinary beauty of her. Due to the power limitation of CJB, she can’t escape from Claris without any assistance. The alchemist Tokitsukaze has heard this savage act and wants to rescue the princess CJB.</p>
-<p>There are n cities numbered from 1 to n in the kingdom Adalet. Because of the excellent transportation, there is exactly a two-way road between any two cites. Tokitsukaze lives in city 1. The Magician Claris lives in city n. Since the exam will be held soon, Tokitsukaze wants to rescue CJB as fast as possible, so she will choose the shortest path to reach city n.</p>
-<p>Claris has also heard this news and is afraid of being punished, so he decides to slow Tokitsukaze down by making an explosion on k roads he chose and causing these roads to lose their capability of two-way transportation, since it can pave the way for having enough time to prepare his powerful magic against Tokitsukaze.</p>
-<p>Tokitsukaze knows some roads will be destroyed and can immediately recognize where they are, but she has no approach to prevent this explosion, so she chooses just to move along the shortest path after Claris completes his explosion.</p>
-<p>Now Claris wants to know, after finishing his explosion, what the longest possible length is of the shortest path from city 1 to city n.</p>
-<hr>
-<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>There are several test cases.</p>
-<p>The first line contains an integer T (1≤T≤100), denoting the number of test cases. Then follow all the test cases.</p>
-<p>For each test case, the first line contains two integers n and k (3≤n≤50,1≤k≤min(n−2,5)), denoting the number of cities and the number of roads being exploded, respectively.</p>
-<p>The next n(n−1)2 lines describe all the roads, where each line contains three integers u, v and w (1≤u,v≤n,u≠v,1≤w≤104), representing a two-way road of length w between city u and city v. It is guaranteed that for every two cities, there exists exactly one road whose length is randomly distributed between 1 and 104.</p>
-<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each case, output in one line an integer, denoting the longest possible length of the shortest path after the explosion.</p>
-<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><blockquote>
-3<br/>
-5 1<br/>
-1 2 2990<br/>
-1 3 2414<br/>
-1 4 4018<br/>
-1 5 6216<br/>
-2 3 9140<br/>
-2 4 4169<br/>
-2 5 550<br/>
-3 4 6618<br/>
-3 5 3206<br/>
-4 5 105<br/>
-5 2<br/>
-1 2 2990<br/>
-1 3 2414<br/>
-1 4 4018<br/>
-1 5 6216<br/>
-2 3 9140<br/>
-2 4 4169<br/>
-2 5 550<br/>
-3 4 6618<br/>
-3 5 3206<br/>
-4 5 105<br/>
-5 3<br/>
-1 2 2990<br/>
-1 3 2414<br/>
-1 4 4018<br/>
-1 5 6216<br/>
-2 3 9140<br/>
-2 4 4169<br/>
-2 5 550<br/>
-3 4 6618<br/>
-3 5 3206<br/>
-4 5 105<br/>
-</blockquote>
+        <a id="more"></a>
 
-<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><blockquote>
-4123<br/>
-5620<br/>
-6216
-</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> tot=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> head[maxn],d[maxn],p[maxn][<span class="number">21</span>];<span class="comment">//head数组就是链接表标配了吧？d存的是深度（deep）,p[i][j]存的[i]向上走2的j次方那么长的路径</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,next;</span><br><span class="line">&#125;e[maxn*<span class="number">2</span>];<span class="comment">//存树</span></span><br></pre></td></tr></table></figure>
 
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[tot].to=v;</span><br><span class="line">    e[tot].next=head[u];</span><br><span class="line">    head[u]=tot++;</span><br><span class="line">&#125;               <span class="comment">//加边函数</span></span><br></pre></td></tr></table></figure>
 
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> father)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    d[u]=d[father]+<span class="number">1</span>;</span><br><span class="line">    p[u][<span class="number">0</span>]=father;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;(<span class="number">1</span>&lt;&lt;i)&lt;=d[u];i++)</span><br><span class="line">        p[u][i]=p[p[u][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u]; i!=<span class="number">-1</span>; i=e[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(e[i].to != father)</span><br><span class="line">            dfs(e[i].to, u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">55</span>;</span><br><span class="line"><span class="keyword">bool</span> vis[N], lose[N][N];</span><br><span class="line"><span class="comment">//n是顶点数，k是要删除的边数</span></span><br><span class="line"><span class="keyword">int</span> n, k, u, v, w, ans;</span><br><span class="line"><span class="keyword">int</span> mp[N][N], path[N], dis[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(path, <span class="number">0</span>, <span class="keyword">sizeof</span>(path));          <span class="comment">//存dijkstra的路径</span></span><br><span class="line">    <span class="built_in">memset</span>(dis, INF, <span class="keyword">sizeof</span>(dis));          <span class="comment">//存最短路的路径大小</span></span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line"></span><br><span class="line">    dis[<span class="number">1</span>]=<span class="number">0</span>, path[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> d=INF, f=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">if</span>(!vis[j] &amp;&amp; dis[j] &lt; d)&#123;</span><br><span class="line">                d = dis[j];</span><br><span class="line">                f = j;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="comment">//f记录从i点出发最短的是f点</span></span><br><span class="line">        vis[f]=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dis[f]+mp[f][j] &lt; dis[j] &amp;&amp; !lose[f][j])&#123;</span><br><span class="line">                dis[j]=dis[f]+mp[f][j];                 <span class="comment">//变更j的路径，从f到j</span></span><br><span class="line">                path[j]=f;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    dijkstra();</span><br><span class="line">    <span class="keyword">if</span>(x==k+<span class="number">1</span>)&#123;                  <span class="comment">//删k边，跑k+1次dijkstra</span></span><br><span class="line">        ans=max(ans, dis[n]);    <span class="comment">//dis[n]是最短路的长度，求最大值</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//pre 的作用是只枚举截断最短路的边！！</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n, pre=n; i; i=path[i])&#123;      <span class="comment">//path[i]存的是i的上一个节点</span></span><br><span class="line">        lose[i][pre]=lose[pre][i]=<span class="literal">true</span>;    <span class="comment">//枚举删除的边</span></span><br><span class="line">        dfs(x+<span class="number">1</span>);</span><br><span class="line">        lose[i][pre]=lose[pre][i]=<span class="literal">false</span>;    <span class="comment">//回溯</span></span><br><span class="line">        pre=i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="built_in">memset</span>(mp, INF, <span class="keyword">sizeof</span>(mp));            <span class="comment">//初始化图的距离</span></span><br><span class="line">    <span class="built_in">memset</span>(lose, <span class="number">0</span>, <span class="keyword">sizeof</span>(lose));          <span class="comment">//初始化删的边</span></span><br><span class="line">    ans=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//图中无“圈”</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        mp[i][i]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n*(n<span class="number">-1</span>)/<span class="number">2</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;w;</span><br><span class="line">        mp[u][v]=mp[v][u]=w;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//提高cin cout效率</span></span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>), <span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;T;</span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">        solve();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><figcaption><span> </span><a target="_blank" rel="noopener" href="//首先进行的预处理，将所有点的deep和p的初始值dfs出来">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span>                                          <span class="comment">//非常标准的lca查找</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(d[a]&gt;d[b])</span><br><span class="line">        swap(a,b);           <span class="comment">//保证a是在b结点上方，即a的深度小于b的深度</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        <span class="keyword">if</span>(d[a]&lt;=d[b]-(<span class="number">1</span>&lt;&lt;i))</span><br><span class="line">            b=p[b][i];             <span class="comment">//先把b移到和a同一个深度</span></span><br><span class="line">    <span class="keyword">if</span>(a==b)</span><br><span class="line">        <span class="keyword">return</span> a;                 <span class="comment">//特判，如果b上来和就和a一样了，那就可以直接返回答案了</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(p[a][i]==p[b][i])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            a=p[a][i],b=p[b][i];           <span class="comment">//A和B一起上移</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p[a][<span class="number">0</span>];               <span class="comment">//找出最后a值的数字</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h2>
+<h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1>
     </div>
 
     
@@ -463,7 +402,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://fraunhofer0126.github.io/2020/08/03/[%E4%B9%A0%E9%A2%98]%E6%9C%80%E7%9F%AD%E8%B7%AFHDU6797/" title="[习题]最短路HDU6797">https://fraunhofer0126.github.io/2020/08/03/[习题]最短路HDU6797/</a>
+    <a href="https://fraunhofer0126.github.io/2020/08/10/LCA%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/" title="LCA模板总结">https://fraunhofer0126.github.io/2020/08/10/LCA模板总结/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -493,9 +432,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/dijkstra/" rel="tag"># dijkstra</a>
-              <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" rel="tag"># 最短路</a>
-              <a href="/tags/dfs/" rel="tag"># dfs</a>
+              <a href="/tags/LCA/" rel="tag"># LCA</a>
+              <a href="/tags/%E5%80%8D%E5%A2%9E%E7%AE%97%E6%B3%95/" rel="tag"># 倍增算法</a>
           </div>
 
         
@@ -504,12 +442,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/03/Mardown%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/" rel="prev" title="Mardown语法教程">
-      <i class="fa fa-chevron-left"></i> Mardown语法教程
+    <a href="/2020/08/10/%E6%9C%80-%E6%AC%A1%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/" rel="prev" title="最/次小生成树模板总结">
+      <i class="fa fa-chevron-left"></i> 最/次小生成树模板总结
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/08/04/%E5%85%AB%E7%9A%87%E5%90%8E%E7%AE%97%E6%B3%95/" rel="next" title="八皇后算法">
-      八皇后算法 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/08/11/%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/" rel="next" title="最短路算法总结">
+      最短路算法总结 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
