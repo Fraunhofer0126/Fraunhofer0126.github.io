@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>LCA模板总结</title>
-    <url>/2020/08/10/LCA%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<a id="more"></a>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> tot=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> head[maxn],d[maxn],p[maxn][<span class="number">21</span>];<span class="comment">//head数组就是链接表标配了吧？d存的是深度（deep）,p[i][j]存的[i]向上走2的j次方那么长的路径</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,next;</span><br><span class="line">&#125;e[maxn*<span class="number">2</span>];<span class="comment">//存树</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[tot].to=v;</span><br><span class="line">    e[tot].next=head[u];</span><br><span class="line">    head[u]=tot++;</span><br><span class="line">&#125;               <span class="comment">//加边函数</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> father)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    d[u]=d[father]+<span class="number">1</span>;</span><br><span class="line">    p[u][<span class="number">0</span>]=father;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;(<span class="number">1</span>&lt;&lt;i)&lt;=d[u];i++)</span><br><span class="line">        p[u][i]=p[p[u][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u]; i!=<span class="number">-1</span>; i=e[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(e[i].to != father)</span><br><span class="line">            dfs(e[i].to, u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><figcaption><span> </span><a href="//首先进行的预处理，将所有点的deep和p的初始值dfs出来">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span>                                          <span class="comment">//非常标准的lca查找</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(d[a]&gt;d[b])</span><br><span class="line">        swap(a,b);           <span class="comment">//保证a是在b结点上方，即a的深度小于b的深度</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        <span class="keyword">if</span>(d[a]&lt;=d[b]-(<span class="number">1</span>&lt;&lt;i))</span><br><span class="line">            b=p[b][i];             <span class="comment">//先把b移到和a同一个深度</span></span><br><span class="line">    <span class="keyword">if</span>(a==b)</span><br><span class="line">        <span class="keyword">return</span> a;                 <span class="comment">//特判，如果b上来和就和a一样了，那就可以直接返回答案了</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(p[a][i]==p[b][i])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            a=p[a][i],b=p[b][i];           <span class="comment">//A和B一起上移</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p[a][<span class="number">0</span>];               <span class="comment">//找出最后a值的数字</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1>]]></content>
-      <categories>
-        <category>算法竞赛</category>
-      </categories>
-      <tags>
-        <tag>LCA</tag>
-        <tag>倍增算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mardown语法教程</title>
-    <url>/2020/08/03/Mardown%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<blockquote>
-<h3 id="转载-点击阅读原文"><a href="#转载-点击阅读原文" class="headerlink" title="转载 点击阅读原文"></a>转载 <a href="https://www.jianshu.com/p/ebe52d2d468f" title="原文链接">点击阅读原文</a></h3></blockquote>
-]]></content>
-      <categories>
-        <category>Reference</category>
-      </categories>
-      <tags>
-        <tag>blog</tag>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>01背包(持续更新)</title>
     <url>/2020/08/06/01%E8%83%8C%E5%8C%85/</url>
     <content><![CDATA[<h1 id="01背包模板"><a href="#01背包模板" class="headerlink" title="01背包模板"></a>01背包模板</h1><a id="more"></a>
@@ -76,77 +40,17 @@
       </tags>
   </entry>
   <entry>
-    <title>[习题]最短路HDU6797</title>
-    <url>/2020/08/03/%5B%E4%B9%A0%E9%A2%98%5D%E6%9C%80%E7%9F%AD%E8%B7%AFHDU6797/</url>
-    <content><![CDATA[<h1 id="Tokitsukaze-and-Rescue"><a href="#Tokitsukaze-and-Rescue" class="headerlink" title="Tokitsukaze and Rescue"></a>Tokitsukaze and Rescue</h1><a id="more"></a>
-<p>Princess CJB has lived almost her entire life in the isolated town of Ertona, where CJB uses her unique ability to recognize where crystals of materials are buried. By way of a fateful encounter, CJB learns of the Alchemy Exam and decides to take her first step into the outside world, setting off on a grand journey to become a certified alchemist and discover the mysteries that life has to offer!</p>
-<p>In order to take part in the Alchemy Exam, CJB goes to the Reisenberg town without any partners. But the kingdom Adalet is unbelievably enormous so that there are many hidden risks. Claris, a powerful evil magician, wants to monopolize CJB for the extraordinary beauty of her. Due to the power limitation of CJB, she can’t escape from Claris without any assistance. The alchemist Tokitsukaze has heard this savage act and wants to rescue the princess CJB.</p>
-<p>There are n cities numbered from 1 to n in the kingdom Adalet. Because of the excellent transportation, there is exactly a two-way road between any two cites. Tokitsukaze lives in city 1. The Magician Claris lives in city n. Since the exam will be held soon, Tokitsukaze wants to rescue CJB as fast as possible, so she will choose the shortest path to reach city n.</p>
-<p>Claris has also heard this news and is afraid of being punished, so he decides to slow Tokitsukaze down by making an explosion on k roads he chose and causing these roads to lose their capability of two-way transportation, since it can pave the way for having enough time to prepare his powerful magic against Tokitsukaze.</p>
-<p>Tokitsukaze knows some roads will be destroyed and can immediately recognize where they are, but she has no approach to prevent this explosion, so she chooses just to move along the shortest path after Claris completes his explosion.</p>
-<p>Now Claris wants to know, after finishing his explosion, what the longest possible length is of the shortest path from city 1 to city n.</p>
-<hr>
-<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>There are several test cases.</p>
-<p>The first line contains an integer T (1≤T≤100), denoting the number of test cases. Then follow all the test cases.</p>
-<p>For each test case, the first line contains two integers n and k (3≤n≤50,1≤k≤min(n−2,5)), denoting the number of cities and the number of roads being exploded, respectively.</p>
-<p>The next n(n−1)2 lines describe all the roads, where each line contains three integers u, v and w (1≤u,v≤n,u≠v,1≤w≤104), representing a two-way road of length w between city u and city v. It is guaranteed that for every two cities, there exists exactly one road whose length is randomly distributed between 1 and 104.</p>
-<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each case, output in one line an integer, denoting the longest possible length of the shortest path after the explosion.</p>
-<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><blockquote>
-3<br/>
-5 1<br/>
-1 2 2990<br/>
-1 3 2414<br/>
-1 4 4018<br/>
-1 5 6216<br/>
-2 3 9140<br/>
-2 4 4169<br/>
-2 5 550<br/>
-3 4 6618<br/>
-3 5 3206<br/>
-4 5 105<br/>
-5 2<br/>
-1 2 2990<br/>
-1 3 2414<br/>
-1 4 4018<br/>
-1 5 6216<br/>
-2 3 9140<br/>
-2 4 4169<br/>
-2 5 550<br/>
-3 4 6618<br/>
-3 5 3206<br/>
-4 5 105<br/>
-5 3<br/>
-1 2 2990<br/>
-1 3 2414<br/>
-1 4 4018<br/>
-1 5 6216<br/>
-2 3 9140<br/>
-2 4 4169<br/>
-2 5 550<br/>
-3 4 6618<br/>
-3 5 3206<br/>
-4 5 105<br/>
-</blockquote>
-
-<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><blockquote>
-4123<br/>
-5620<br/>
-6216
-</blockquote>
-
-
-
-<h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">55</span>;</span><br><span class="line"><span class="keyword">bool</span> vis[N], lose[N][N];</span><br><span class="line"><span class="comment">//n是顶点数，k是要删除的边数</span></span><br><span class="line"><span class="keyword">int</span> n, k, u, v, w, ans;</span><br><span class="line"><span class="keyword">int</span> mp[N][N], path[N], dis[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(path, <span class="number">0</span>, <span class="keyword">sizeof</span>(path));          <span class="comment">//存dijkstra的路径</span></span><br><span class="line">    <span class="built_in">memset</span>(dis, INF, <span class="keyword">sizeof</span>(dis));          <span class="comment">//存最短路的路径大小</span></span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line"></span><br><span class="line">    dis[<span class="number">1</span>]=<span class="number">0</span>, path[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> d=INF, f=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">if</span>(!vis[j] &amp;&amp; dis[j] &lt; d)&#123;</span><br><span class="line">                d = dis[j];</span><br><span class="line">                f = j;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="comment">//f记录从i点出发最短的是f点</span></span><br><span class="line">        vis[f]=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dis[f]+mp[f][j] &lt; dis[j] &amp;&amp; !lose[f][j])&#123;</span><br><span class="line">                dis[j]=dis[f]+mp[f][j];                 <span class="comment">//变更j的路径，从f到j</span></span><br><span class="line">                path[j]=f;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    dijkstra();</span><br><span class="line">    <span class="keyword">if</span>(x==k+<span class="number">1</span>)&#123;                  <span class="comment">//删k边，跑k+1次dijkstra</span></span><br><span class="line">        ans=max(ans, dis[n]);    <span class="comment">//dis[n]是最短路的长度，求最大值</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//pre 的作用是只枚举截断最短路的边！！</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n, pre=n; i; i=path[i])&#123;      <span class="comment">//path[i]存的是i的上一个节点</span></span><br><span class="line">        lose[i][pre]=lose[pre][i]=<span class="literal">true</span>;    <span class="comment">//枚举删除的边</span></span><br><span class="line">        dfs(x+<span class="number">1</span>);</span><br><span class="line">        lose[i][pre]=lose[pre][i]=<span class="literal">false</span>;    <span class="comment">//回溯</span></span><br><span class="line">        pre=i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="built_in">memset</span>(mp, INF, <span class="keyword">sizeof</span>(mp));            <span class="comment">//初始化图的距离</span></span><br><span class="line">    <span class="built_in">memset</span>(lose, <span class="number">0</span>, <span class="keyword">sizeof</span>(lose));          <span class="comment">//初始化删的边</span></span><br><span class="line">    ans=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//图中无“圈”</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        mp[i][i]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n*(n<span class="number">-1</span>)/<span class="number">2</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;w;</span><br><span class="line">        mp[u][v]=mp[v][u]=w;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//提高cin cout效率</span></span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>), <span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;T;</span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">        solve();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h2>]]></content>
+    <title>Mardown语法教程</title>
+    <url>/2020/08/03/Mardown%E8%AF%AD%E6%B3%95%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<blockquote>
+<h3 id="转载-点击阅读原文"><a href="#转载-点击阅读原文" class="headerlink" title="转载 点击阅读原文"></a>转载 <a href="https://www.jianshu.com/p/ebe52d2d468f" title="原文链接">点击阅读原文</a></h3></blockquote>
+]]></content>
       <categories>
-        <category>算法竞赛</category>
-        <category>搜索</category>
+        <category>Reference</category>
       </categories>
       <tags>
-        <tag>dijkstra</tag>
-        <tag>最短路</tag>
-        <tag>dfs</tag>
+        <tag>blog</tag>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
@@ -204,6 +108,28 @@ i-m <= j <= i-1
       <tags>
         <tag>DP</tag>
         <tag>单调队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LCA模板总结</title>
+    <url>/2020/08/10/LCA%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<a id="more"></a>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> tot=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> head[maxn],d[maxn],p[maxn][<span class="number">21</span>];<span class="comment">//head数组就是链接表标配了吧？d存的是深度（deep）,p[i][j]存的[i]向上走2的j次方那么长的路径</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,next;</span><br><span class="line">&#125;e[maxn*<span class="number">2</span>];<span class="comment">//存树</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[tot].to=v;</span><br><span class="line">    e[tot].next=head[u];</span><br><span class="line">    head[u]=tot++;</span><br><span class="line">&#125;               <span class="comment">//加边函数</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> father)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    d[u]=d[father]+<span class="number">1</span>;</span><br><span class="line">    p[u][<span class="number">0</span>]=father;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;(<span class="number">1</span>&lt;&lt;i)&lt;=d[u];i++)</span><br><span class="line">        p[u][i]=p[p[u][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u]; i!=<span class="number">-1</span>; i=e[i].next)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(e[i].to != father)</span><br><span class="line">            dfs(e[i].to, u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><figcaption><span> </span><a href="//首先进行的预处理，将所有点的deep和p的初始值dfs出来">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span>                                          <span class="comment">//非常标准的lca查找</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(d[a]&gt;d[b])</span><br><span class="line">        swap(a,b);           <span class="comment">//保证a是在b结点上方，即a的深度小于b的深度</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        <span class="keyword">if</span>(d[a]&lt;=d[b]-(<span class="number">1</span>&lt;&lt;i))</span><br><span class="line">            b=p[b][i];             <span class="comment">//先把b移到和a同一个深度</span></span><br><span class="line">    <span class="keyword">if</span>(a==b)</span><br><span class="line">        <span class="keyword">return</span> a;                 <span class="comment">//特判，如果b上来和就和a一样了，那就可以直接返回答案了</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(p[a][i]==p[b][i])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            a=p[a][i],b=p[b][i];           <span class="comment">//A和B一起上移</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p[a][<span class="number">0</span>];               <span class="comment">//找出最后a值的数字</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1>]]></content>
+      <categories>
+        <category>算法竞赛</category>
+      </categories>
+      <tags>
+        <tag>LCA</tag>
+        <tag>倍增算法</tag>
       </tags>
   </entry>
   <entry>
@@ -302,6 +228,80 @@ pearch<br/>
       <tags>
         <tag>DP</tag>
         <tag>lcs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[习题]最短路HDU6797</title>
+    <url>/2020/08/03/%5B%E4%B9%A0%E9%A2%98%5D%E6%9C%80%E7%9F%AD%E8%B7%AFHDU6797/</url>
+    <content><![CDATA[<h1 id="Tokitsukaze-and-Rescue"><a href="#Tokitsukaze-and-Rescue" class="headerlink" title="Tokitsukaze and Rescue"></a>Tokitsukaze and Rescue</h1><a id="more"></a>
+<p>Princess CJB has lived almost her entire life in the isolated town of Ertona, where CJB uses her unique ability to recognize where crystals of materials are buried. By way of a fateful encounter, CJB learns of the Alchemy Exam and decides to take her first step into the outside world, setting off on a grand journey to become a certified alchemist and discover the mysteries that life has to offer!</p>
+<p>In order to take part in the Alchemy Exam, CJB goes to the Reisenberg town without any partners. But the kingdom Adalet is unbelievably enormous so that there are many hidden risks. Claris, a powerful evil magician, wants to monopolize CJB for the extraordinary beauty of her. Due to the power limitation of CJB, she can’t escape from Claris without any assistance. The alchemist Tokitsukaze has heard this savage act and wants to rescue the princess CJB.</p>
+<p>There are n cities numbered from 1 to n in the kingdom Adalet. Because of the excellent transportation, there is exactly a two-way road between any two cites. Tokitsukaze lives in city 1. The Magician Claris lives in city n. Since the exam will be held soon, Tokitsukaze wants to rescue CJB as fast as possible, so she will choose the shortest path to reach city n.</p>
+<p>Claris has also heard this news and is afraid of being punished, so he decides to slow Tokitsukaze down by making an explosion on k roads he chose and causing these roads to lose their capability of two-way transportation, since it can pave the way for having enough time to prepare his powerful magic against Tokitsukaze.</p>
+<p>Tokitsukaze knows some roads will be destroyed and can immediately recognize where they are, but she has no approach to prevent this explosion, so she chooses just to move along the shortest path after Claris completes his explosion.</p>
+<p>Now Claris wants to know, after finishing his explosion, what the longest possible length is of the shortest path from city 1 to city n.</p>
+<hr>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>There are several test cases.</p>
+<p>The first line contains an integer T (1≤T≤100), denoting the number of test cases. Then follow all the test cases.</p>
+<p>For each test case, the first line contains two integers n and k (3≤n≤50,1≤k≤min(n−2,5)), denoting the number of cities and the number of roads being exploded, respectively.</p>
+<p>The next n(n−1)2 lines describe all the roads, where each line contains three integers u, v and w (1≤u,v≤n,u≠v,1≤w≤104), representing a two-way road of length w between city u and city v. It is guaranteed that for every two cities, there exists exactly one road whose length is randomly distributed between 1 and 104.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each case, output in one line an integer, denoting the longest possible length of the shortest path after the explosion.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><blockquote>
+3<br/>
+5 1<br/>
+1 2 2990<br/>
+1 3 2414<br/>
+1 4 4018<br/>
+1 5 6216<br/>
+2 3 9140<br/>
+2 4 4169<br/>
+2 5 550<br/>
+3 4 6618<br/>
+3 5 3206<br/>
+4 5 105<br/>
+5 2<br/>
+1 2 2990<br/>
+1 3 2414<br/>
+1 4 4018<br/>
+1 5 6216<br/>
+2 3 9140<br/>
+2 4 4169<br/>
+2 5 550<br/>
+3 4 6618<br/>
+3 5 3206<br/>
+4 5 105<br/>
+5 3<br/>
+1 2 2990<br/>
+1 3 2414<br/>
+1 4 4018<br/>
+1 5 6216<br/>
+2 3 9140<br/>
+2 4 4169<br/>
+2 5 550<br/>
+3 4 6618<br/>
+3 5 3206<br/>
+4 5 105<br/>
+</blockquote>
+
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><blockquote>
+4123<br/>
+5620<br/>
+6216
+</blockquote>
+
+
+
+<h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">55</span>;</span><br><span class="line"><span class="keyword">bool</span> vis[N], lose[N][N];</span><br><span class="line"><span class="comment">//n是顶点数，k是要删除的边数</span></span><br><span class="line"><span class="keyword">int</span> n, k, u, v, w, ans;</span><br><span class="line"><span class="keyword">int</span> mp[N][N], path[N], dis[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(path, <span class="number">0</span>, <span class="keyword">sizeof</span>(path));          <span class="comment">//存dijkstra的路径</span></span><br><span class="line">    <span class="built_in">memset</span>(dis, INF, <span class="keyword">sizeof</span>(dis));          <span class="comment">//存最短路的路径大小</span></span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line"></span><br><span class="line">    dis[<span class="number">1</span>]=<span class="number">0</span>, path[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> d=INF, f=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">if</span>(!vis[j] &amp;&amp; dis[j] &lt; d)&#123;</span><br><span class="line">                d = dis[j];</span><br><span class="line">                f = j;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="comment">//f记录从i点出发最短的是f点</span></span><br><span class="line">        vis[f]=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dis[f]+mp[f][j] &lt; dis[j] &amp;&amp; !lose[f][j])&#123;</span><br><span class="line">                dis[j]=dis[f]+mp[f][j];                 <span class="comment">//变更j的路径，从f到j</span></span><br><span class="line">                path[j]=f;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    dijkstra();</span><br><span class="line">    <span class="keyword">if</span>(x==k+<span class="number">1</span>)&#123;                  <span class="comment">//删k边，跑k+1次dijkstra</span></span><br><span class="line">        ans=max(ans, dis[n]);    <span class="comment">//dis[n]是最短路的长度，求最大值</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//pre 的作用是只枚举截断最短路的边！！</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n, pre=n; i; i=path[i])&#123;      <span class="comment">//path[i]存的是i的上一个节点</span></span><br><span class="line">        lose[i][pre]=lose[pre][i]=<span class="literal">true</span>;    <span class="comment">//枚举删除的边</span></span><br><span class="line">        dfs(x+<span class="number">1</span>);</span><br><span class="line">        lose[i][pre]=lose[pre][i]=<span class="literal">false</span>;    <span class="comment">//回溯</span></span><br><span class="line">        pre=i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="built_in">memset</span>(mp, INF, <span class="keyword">sizeof</span>(mp));            <span class="comment">//初始化图的距离</span></span><br><span class="line">    <span class="built_in">memset</span>(lose, <span class="number">0</span>, <span class="keyword">sizeof</span>(lose));          <span class="comment">//初始化删的边</span></span><br><span class="line">    ans=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//图中无“圈”</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        mp[i][i]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n*(n<span class="number">-1</span>)/<span class="number">2</span>; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;w;</span><br><span class="line">        mp[u][v]=mp[v][u]=w;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//提高cin cout效率</span></span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>), <span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;T;</span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">        solve();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h2>]]></content>
+      <categories>
+        <category>算法竞赛</category>
+        <category>搜索</category>
+      </categories>
+      <tags>
+        <tag>dijkstra</tag>
+        <tag>最短路</tag>
+        <tag>dfs</tag>
       </tags>
   </entry>
   <entry>
@@ -631,6 +631,41 @@ a × b ≡ (a%p × b%p)(mod p)<br/>
       </tags>
   </entry>
   <entry>
+    <title>最/次小生成树模板总结</title>
+    <url>/2020/08/10/%E6%9C%80-%E6%AC%A1%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<a id="more"></a>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 20000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">```cpp</span><br><span class="line"><span class="comment">//建立并查集</span></span><br><span class="line"><span class="keyword">int</span> ufs[MAX];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        ufs[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Getroot</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(ufs[a]!=a)&#123;</span><br><span class="line">        ufs[a] = Getroot(ufs[a]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ufs[a];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = Getroot(a);</span><br><span class="line">    <span class="keyword">int</span> y = Getroot(b);</span><br><span class="line">    <span class="keyword">if</span>(x!=y)&#123;</span><br><span class="line">        ufs[y] = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">line</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> s, e;</span><br><span class="line">    <span class="keyword">int</span> cost;</span><br><span class="line"></span><br><span class="line">&#125;road[MAX];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(line a, line b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.cost &lt; b.cost;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="built_in">queue</span>&lt;line&gt; que;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kruskal</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())</span><br><span class="line">        que.pop();</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(Getroot(road[i].s) != Getroot(road[i].e))&#123;</span><br><span class="line">            Union(road[i].s, road[i].e);</span><br><span class="line">            ans += road[i].cost;</span><br><span class="line">            que.push(road[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">second</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = INF;</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        line p = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        Init(n);</span><br><span class="line">        <span class="keyword">int</span> cur = <span class="number">0</span>,len = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(road[i].s == p.s &amp;&amp; road[i].e == p.e &amp;&amp; road[i].cost == p.cost) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(Getroot(road[i].s) != Getroot(road[i].e))&#123;</span><br><span class="line">                Union(road[i].s, road[i].e);</span><br><span class="line">                cur += road[i].cost;</span><br><span class="line">                ++len;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(len == n) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(len == n)</span><br><span class="line">            ans = min(ans,cur);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(road,<span class="number">0</span>,<span class="keyword">sizeof</span>(road));</span><br><span class="line"></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">        Init(n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;road[i].s, &amp;road[i].e, &amp;road[i].cost);</span><br><span class="line"></span><br><span class="line">        sort(road, road+m, cmp);</span><br><span class="line">        <span class="keyword">int</span> ans1 = kruskal();</span><br><span class="line">        <span class="keyword">int</span> ans2 = second();</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ans1&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;ans2&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1>]]></content>
+      <categories>
+        <category>算法竞赛</category>
+      </categories>
+      <tags>
+        <tag>最小生成树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>知乎: 如何看待Trump正式封杀tiktok和微信</title>
+    <url>/2020/08/08/%E7%9F%A5%E4%B9%8E-%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85Trump%E6%AD%A3%E5%BC%8F%E5%B0%81%E6%9D%80tiktok%E5%92%8C%E5%BE%AE%E4%BF%A1/</url>
+    <content><![CDATA[<a id="more"></a>
+
+<p>转自知乎用户 <a href="https://www.zhihu.com/people/dong-liang-85">猴子老湿</a></p>
+<blockquote>
+
+<p>我在法学院的时候，一个偏左的法理学教授意味深长地对我们说了一句话——<strong>去政治化本身就是一种政治</strong><br/><br>到今天，结合字节跳动等企业在美国的受挫，我算是稍微了解了一点这句话的含义。现代资本主义国家，一直是主张国际秩序和投资环境去政治化的。而且，他们标榜自身就是一个去政治化发展起来的典范。<br/><br>他们把自己标榜为政治与经济相分离，市场经济不受政治约束自我循环，社会秩序可以脱离政治自我维系的一种理想国家模型。一切对经济的干预和社会革命都是对自然市场秩序的破坏，都会受到他们的谴责。在去政治化的基础上，发展起来了<strong>互联网自由、普世价值、科技无国界</strong>等口号。<br/><br>但是当你真的信了这些口号，你就上当了。因为这些口号是去政治化的产物，而去政治化本身就是一种政治。去政治化的政治目的是让你放松对西方资本主义国家和资本家的警惕，让发展中国家在面对发达国家资本和文化的侵袭时，采取听之任之、不抵抗的政策。<strong>如果你抵抗了，那么你就是政治干预，你就不民主、不法治。</strong><br/><br>这正如某互联网大佬说“在该奋斗的年龄不要选择安逸”一样，这句话看似强调奋斗的价值，实际上是为了更多地榨取码农的剩余价值。但是，最最麻烦的地方在于，你还不能很好地反驳奋斗观这种表面正确的价值。<br/><br>正如发展中国家不能很好地反驳民主、法治、自由一样，在西方去政治化的阴谋面前，很多国家无力招架。<br/><br>这是去政治化非常高明的地方。但是正如上文所说，去政治化不代表政治不存在，只不过宣扬去政治化的国家，把政治獠牙小心地收了起来，装作和善的样子。当你相信了去政治化的口号以后，你按照去政治化的方式去美国等西方国家投资，威胁到他们的经济利益和国家利益时，你就会感受到，他们会把去政治化那一套收了起来，而把政治这匹恶狼放出来（这批饿狼可能还会被去政治化洗脑的人称之为法治）。<br/><br><strong>一家按照去政治化要求构建的企业，即将被自70年代后期开始潜伏的去政治化阴谋咬死，这实在算不得什么阴谋。只能说算是被忽悠瘸了的代价。</strong></p>
+</blockquote>]]></content>
+  </entry>
+  <entry>
     <title>最短路算法总结</title>
     <url>/2020/08/11/%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<a id="more"></a>
@@ -667,39 +702,49 @@ a × b ≡ (a%p × b%p)(mod p)<br/>
       </tags>
   </entry>
   <entry>
-    <title>最/次小生成树模板总结</title>
-    <url>/2020/08/10/%E6%9C%80-%E6%AC%A1%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/</url>
+    <title>矩阵</title>
+    <url>/2020/08/13/%E7%9F%A9%E9%98%B5/</url>
     <content><![CDATA[<a id="more"></a>
 
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 20000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">```cpp</span><br><span class="line"><span class="comment">//建立并查集</span></span><br><span class="line"><span class="keyword">int</span> ufs[MAX];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        ufs[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Getroot</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(ufs[a]!=a)&#123;</span><br><span class="line">        ufs[a] = Getroot(ufs[a]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ufs[a];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = Getroot(a);</span><br><span class="line">    <span class="keyword">int</span> y = Getroot(b);</span><br><span class="line">    <span class="keyword">if</span>(x!=y)&#123;</span><br><span class="line">        ufs[y] = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h1><p>模板就是一个矩阵乘法和矩阵版本的快速幂<br/></p>
+<ul>
+<li><p>temp[i][j]每一步都需要清零</p>
+</li>
+<li><p>mod根据题目意思而定</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">multi</span><span class="params">(<span class="keyword">int</span> x[N][N],<span class="keyword">int</span> y[N][N])</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">            temp[i][j] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">1</span>; t &lt;= n; t++)</span><br><span class="line">                temp[i][j] = (temp[i][j] + x[i][t]*y[t][j]) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            x[i][j] = temp[i][j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>矩阵是二维数组，不好返回值，就把结果存在第一个矩阵中</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickPow</span><span class="params">(<span class="keyword">int</span> a[N][N],<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(res,<span class="number">0</span>,<span class="keyword">sizeof</span> (res));<span class="comment">//n是幂，N是矩阵大小</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        res[i][i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">            multi(res,a);<span class="comment">//res=res*a;复制直接在multi里面实现了；</span></span><br><span class="line">        multi(a,a);<span class="comment">//a=a*a</span></span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">line</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> s, e;</span><br><span class="line">    <span class="keyword">int</span> cost;</span><br><span class="line"></span><br><span class="line">&#125;road[MAX];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(line a, line b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.cost &lt; b.cost;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="built_in">queue</span>&lt;line&gt; que;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="POJ3233"><a href="#POJ3233" class="headerlink" title="POJ3233"></a><a href="https://vjudge.net/problem/POJ-3233">POJ3233</a></h2><p>题意：$S = A + A^2 + A^3 + … + A^k$<br/><br>那么我们可以得到递推式 $S_k = S_{k-1} + A^k$<br>$$<br>\left{<br>  \begin{matrix}<br>   E &amp; A \<br>   0 &amp; A<br>  \end{matrix}<br>\right}<br>$$<br>$$<br>\left{<br>  \begin{matrix}<br>   0 &amp; S^{k-1} \<br>   0 &amp; A^{k-1}<br>  \end{matrix}<br>\right}<br>$$<br>$$<br>\left{<br>  \begin{matrix}<br>   0 &amp; S^k \<br>   0 &amp; A^k<br>  \end{matrix}<br>\right}<br>$$<br>(markdown矩阵公式不太熟练)<br/><br>就第一个乘第二个可以得到第三个，第三个右上角就是我们想要的<br/><br>递推一下不难发现<br>$$<br>\left{<br>  \begin{matrix}<br>   E &amp; A \<br>   0 &amp; A<br>  \end{matrix}<br>\right}^{k-1}<br>$$<br>$$<br>\left{<br>  \begin{matrix}<br>   0 &amp; S^{1} \<br>   0 &amp; A^{1}<br>  \end{matrix}<br>\right}<br>$$<br>$$<br>\left{<br>  \begin{matrix}<br>   0 &amp; S^k \<br>   0 &amp; A^k<br>  \end{matrix}<br>\right}<br>$$<br>又发现$S^1 = A$, 所以我们只要求<br>$$<br>\left{<br>  \begin{matrix}<br>   E &amp; A \<br>   0 &amp; A<br>  \end{matrix}<br>\right}^{k}<br>$$<br>OVER</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 62</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n, k, mod;</span><br><span class="line"><span class="keyword">int</span> s[N][N], temp[N][N], res[N][N];</span><br><span class="line"></span><br><span class="line"><span class="comment">//简简单单的矩阵乘法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">multi</span><span class="params">(<span class="keyword">int</span> x[N][N],<span class="keyword">int</span> y[N][N])</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">            temp[i][j] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">1</span>; t &lt;= n; t++)</span><br><span class="line">                temp[i][j] = (temp[i][j] + x[i][t]*y[t][j]) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            x[i][j] = temp[i][j];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickPow</span><span class="params">(<span class="keyword">int</span> a[N][N],<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(res,<span class="number">0</span>,<span class="keyword">sizeof</span> (res));<span class="comment">//n是幂，N是矩阵大小</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        res[i][i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">            multi(res,a);<span class="comment">//res=res*a;复制直接在multi里面实现了；</span></span><br><span class="line">        multi(a,a);<span class="comment">//a=a*a</span></span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k&gt;&gt;mod;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;s[i][j+n]);</span><br><span class="line">            s[i+n][j+n] = s[i][j+n];</span><br><span class="line">        &#125;</span><br><span class="line">        s[i][i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    n*=<span class="number">2</span>;</span><br><span class="line">    quickPow(s, k);</span><br><span class="line">    n/=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d%c&quot;</span>,res[i][j+n],j==n?<span class="string">&#x27;\n&#x27;</span>:<span class="string">&#x27; &#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="费马小定理降幂"><a href="#费马小定理降幂" class="headerlink" title="费马小定理降幂"></a>费马小定理降幂</h1><blockquote>
+<p>定理：若p为素数，且p不能整除a(或能整除则结果为0)<br/></p>
+</blockquote>
+<blockquote>
+<p><strong>$a^n ≡ a^{n mod(p−1)}$ (modp)</strong></p>
+</blockquote>
+<p>证明：</p>
+<blockquote>
+设如下变量:
 
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kruskal</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())</span><br><span class="line">        que.pop();</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(Getroot(road[i].s) != Getroot(road[i].e))&#123;</span><br><span class="line">            Union(road[i].s, road[i].e);</span><br><span class="line">            ans += road[i].cost;</span><br><span class="line">            que.push(road[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">second</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = INF;</span><br><span class="line">    <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">        line p = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        Init(n);</span><br><span class="line">        <span class="keyword">int</span> cur = <span class="number">0</span>,len = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(road[i].s == p.s &amp;&amp; road[i].e == p.e &amp;&amp; road[i].cost == p.cost) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(Getroot(road[i].s) != Getroot(road[i].e))&#123;</span><br><span class="line">                Union(road[i].s, road[i].e);</span><br><span class="line">                cur += road[i].cost;</span><br><span class="line">                ++len;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(len == n) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(len == n)</span><br><span class="line">            ans = min(ans,cur);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="built_in">memset</span>(road,<span class="number">0</span>,<span class="keyword">sizeof</span>(road));</span><br><span class="line"></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">        Init(n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;road[i].s, &amp;road[i].e, &amp;road[i].cost);</span><br><span class="line"></span><br><span class="line">        sort(road, road+m, cmp);</span><br><span class="line">        <span class="keyword">int</span> ans1 = kruskal();</span><br><span class="line">        <span class="keyword">int</span> ans2 = second();</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;ans1&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;ans2&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>$k=n / (p-1)$</p>
+<p>$b=n % (p-1)$    </p>
+<p>即 $n=k*(p-1) + b$,则有</p>
+<p>$a^n≡a^{k∗(p−1)+b}$(modp)</p>
+<p>即<br>$a^n≡(a^k)^{p−1}∗a^b$(modp)</p>
+<p>又因为<br>$(a^k)^{p−1}≡1$(modp)</p>
+<p>所以<br>$a^n≡a^b$(modp)</p>
+<p>得证。</p>
+</blockquote>
 
 
 <h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1>]]></content>
       <categories>
         <category>算法竞赛</category>
       </categories>
-      <tags>
-        <tag>最小生成树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>知乎: 如何看待Trump正式封杀tiktok和微信</title>
-    <url>/2020/08/08/%E7%9F%A5%E4%B9%8E-%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85Trump%E6%AD%A3%E5%BC%8F%E5%B0%81%E6%9D%80tiktok%E5%92%8C%E5%BE%AE%E4%BF%A1/</url>
-    <content><![CDATA[<a id="more"></a>
-
-<p>转自知乎用户 <a href="https://www.zhihu.com/people/dong-liang-85">猴子老湿</a></p>
-<blockquote>
-
-<p>我在法学院的时候，一个偏左的法理学教授意味深长地对我们说了一句话——<strong>去政治化本身就是一种政治</strong><br/><br>到今天，结合字节跳动等企业在美国的受挫，我算是稍微了解了一点这句话的含义。现代资本主义国家，一直是主张国际秩序和投资环境去政治化的。而且，他们标榜自身就是一个去政治化发展起来的典范。<br/><br>他们把自己标榜为政治与经济相分离，市场经济不受政治约束自我循环，社会秩序可以脱离政治自我维系的一种理想国家模型。一切对经济的干预和社会革命都是对自然市场秩序的破坏，都会受到他们的谴责。在去政治化的基础上，发展起来了<strong>互联网自由、普世价值、科技无国界</strong>等口号。<br/><br>但是当你真的信了这些口号，你就上当了。因为这些口号是去政治化的产物，而去政治化本身就是一种政治。去政治化的政治目的是让你放松对西方资本主义国家和资本家的警惕，让发展中国家在面对发达国家资本和文化的侵袭时，采取听之任之、不抵抗的政策。<strong>如果你抵抗了，那么你就是政治干预，你就不民主、不法治。</strong><br/><br>这正如某互联网大佬说“在该奋斗的年龄不要选择安逸”一样，这句话看似强调奋斗的价值，实际上是为了更多地榨取码农的剩余价值。但是，最最麻烦的地方在于，你还不能很好地反驳奋斗观这种表面正确的价值。<br/><br>正如发展中国家不能很好地反驳民主、法治、自由一样，在西方去政治化的阴谋面前，很多国家无力招架。<br/><br>这是去政治化非常高明的地方。但是正如上文所说，去政治化不代表政治不存在，只不过宣扬去政治化的国家，把政治獠牙小心地收了起来，装作和善的样子。当你相信了去政治化的口号以后，你按照去政治化的方式去美国等西方国家投资，威胁到他们的经济利益和国家利益时，你就会感受到，他们会把去政治化那一套收了起来，而把政治这匹恶狼放出来（这批饿狼可能还会被去政治化洗脑的人称之为法治）。<br/><br><strong>一家按照去政治化要求构建的企业，即将被自70年代后期开始潜伏的去政治化阴谋咬死，这实在算不得什么阴谋。只能说算是被忽悠瘸了的代价。</strong></p>
-</blockquote>]]></content>
   </entry>
   <entry>
     <title>线段树模板总结</title>
@@ -761,51 +806,6 @@ a × b ≡ (a%p × b%p)(mod p)<br/>
       <tags>
         <tag>线段树</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>矩阵</title>
-    <url>/2020/08/13/%E7%9F%A9%E9%98%B5/</url>
-    <content><![CDATA[<a id="more"></a>
-
-<h1 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h1><p>模板就是一个矩阵乘法和矩阵版本的快速幂<br/></p>
-<ul>
-<li><p>temp[i][j]每一步都需要清零</p>
-</li>
-<li><p>mod根据题目意思而定</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">multi</span><span class="params">(<span class="keyword">int</span> x[N][N],<span class="keyword">int</span> y[N][N])</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">            temp[i][j] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">1</span>; t &lt;= n; t++)</span><br><span class="line">                temp[i][j] = (temp[i][j] + x[i][t]*y[t][j]) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            x[i][j] = temp[i][j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>矩阵是二维数组，不好返回值，就把结果存在第一个矩阵中</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickPow</span><span class="params">(<span class="keyword">int</span> a[N][N],<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(res,<span class="number">0</span>,<span class="keyword">sizeof</span> (res));<span class="comment">//n是幂，N是矩阵大小</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        res[i][i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">            multi(res,a);<span class="comment">//res=res*a;复制直接在multi里面实现了；</span></span><br><span class="line">        multi(a,a);<span class="comment">//a=a*a</span></span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="POJ3233"><a href="#POJ3233" class="headerlink" title="POJ3233"></a><a href="https://vjudge.net/problem/POJ-3233">POJ3233</a></h2><p>题意：$S = A + A^2 + A^3 + … + A^k$<br/><br>那么我们可以得到递推式 $S_k = S_{k-1} + A^k$<br>$$<br>\left{        \begin{matrix}<br>   E &amp; A \<br>   0 &amp; A<br>  \end{matrix} \right}<br>$$<br>$$<br>\left{        \begin{matrix}<br>   0 &amp; S^{k-1} \<br>   0 &amp; A^{k-1}<br>  \end{matrix} \right}<br>$$<br>$$<br>\left{        \begin{matrix}<br>   0 &amp; S^k \<br>   0 &amp; A^k<br>  \end{matrix} \right}<br>$$<br>(markdown矩阵公式不太熟练)<br/><br>就第一个乘第二个可以得到第三个，第三个右上角就是我们想要的<br/><br>递推一下不难发现<br>$$<br>\left{        \begin{matrix}<br>   E &amp; A \<br>   0 &amp; A<br>  \end{matrix} \right}^{k-1}<br>$$<br>$$<br>\left{        \begin{matrix}<br>   0 &amp; S^{1} \<br>   0 &amp; A^{1}<br>  \end{matrix} \right}<br>$$<br>$$<br>\left{        \begin{matrix}<br>   0 &amp; S^k \<br>   0 &amp; A^k<br>  \end{matrix} \right}<br>$$<br>又发现$S^1 = A$, 所以我们只要求<br>$$<br>\left{        \begin{matrix}<br>   E &amp; A \<br>   0 &amp; A<br>  \end{matrix} \right}^{k}<br>$$<br>OVER</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 62</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n, k, mod;</span><br><span class="line"><span class="keyword">int</span> s[N][N], temp[N][N], res[N][N];</span><br><span class="line"></span><br><span class="line"><span class="comment">//简简单单的矩阵乘法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">multi</span><span class="params">(<span class="keyword">int</span> x[N][N],<span class="keyword">int</span> y[N][N])</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">            temp[i][j] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> t = <span class="number">1</span>; t &lt;= n; t++)</span><br><span class="line">                temp[i][j] = (temp[i][j] + x[i][t]*y[t][j]) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            x[i][j] = temp[i][j];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quickPow</span><span class="params">(<span class="keyword">int</span> a[N][N],<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(res,<span class="number">0</span>,<span class="keyword">sizeof</span> (res));<span class="comment">//n是幂，N是矩阵大小</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        res[i][i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">            multi(res,a);<span class="comment">//res=res*a;复制直接在multi里面实现了；</span></span><br><span class="line">        multi(a,a);<span class="comment">//a=a*a</span></span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k&gt;&gt;mod;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;s[i][j+n]);</span><br><span class="line">            s[i+n][j+n] = s[i][j+n];</span><br><span class="line">        &#125;</span><br><span class="line">        s[i][i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    n*=<span class="number">2</span>;</span><br><span class="line">    quickPow(s, k);</span><br><span class="line">    n/=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d%c&quot;</span>,res[i][j+n],j==n?<span class="string">&#x27;\n&#x27;</span>:<span class="string">&#x27; &#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="费马小定理降幂"><a href="#费马小定理降幂" class="headerlink" title="费马小定理降幂"></a>费马小定理降幂</h1><blockquote>
-<p>定理：若p为素数，且p不能整除a(或能整除则结果为0)<br/></p>
-</blockquote>
-<blockquote>
-<p><strong>$a^n ≡ a^{n mod(p−1)}$ (modp)</strong></p>
-</blockquote>
-<p>证明：</p>
-<blockquote>
-设如下变量:
-
-<p>$k=n / (p-1)$</p>
-<p>$b=n % (p-1)$    </p>
-<p>即 $n=k*(p-1) + b$,则有</p>
-<p>$a^n≡a^{k∗(p−1)+b}$(modp)</p>
-<p>即<br>$a^n≡(a^k)^{p−1}∗a^b$(modp)</p>
-<p>又因为<br>$(a^k)^{p−1}≡1$(modp)</p>
-<p>所以<br>$a^n≡a^b$(modp)</p>
-<p>得证。</p>
-</blockquote>
-
-
-<h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1>]]></content>
-      <categories>
-        <category>算法竞赛</category>
-      </categories>
   </entry>
   <entry>
     <title>链式前向星</title>
