@@ -32,7 +32,7 @@
 <meta property="og:description" content="巴什博弈，威佐夫博弈，nim博弈，斐波那契博弈，SG函数">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-14T07:05:13.000Z">
-<meta property="article:modified_time" content="2020-08-14T15:00:51.765Z">
+<meta property="article:modified_time" content="2020-08-17T09:35:46.689Z">
 <meta property="article:author" content="Fraunhofer0126">
 <meta property="article:tag" content="博弈论">
 <meta name="twitter:card" content="summary">
@@ -316,10 +316,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-08-14 15:05:13 / Modified: 23:00:51" itemprop="dateCreated datePublished" datetime="2020-08-14T15:05:13+08:00">2020-08-14</time>
+              <time title="Created: 2020-08-14 15:05:13" itemprop="dateCreated datePublished" datetime="2020-08-14T15:05:13+08:00">2020-08-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-17 17:35:46" itemprop="dateModified" datetime="2020-08-17T17:35:46+08:00">2020-08-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -384,7 +390,7 @@
 <p>接着我们来看胜态的组合，我们可以把Nim取子问题中的结论照搬过来。<strong>两个同级的胜态组合是败态，两个不同级的胜态组合是胜态</strong>。原因也很简单，就和Nim取子问题中面临两堆同样多的石子必败一样。<strong>对于两个同级胜态，后手可以拷贝先手的操作直到无法继续操作，游戏结束</strong>。<strong>而两个不同的胜态，先手可以将其中一个转化成和另一个一样，从而让后手面临两个一样的胜态，所以不同的胜态组合是胜态</strong>。</p>
 <p>注意这个结论要成立，有两个前提条件，第一个是<strong>一个n级胜态可以转移到1 - n-1级任意胜态</strong>。第二个是<strong>胜态级数只能降低不能升高，其实能升高也没问题，后手可以将先手升高的级数再降低回去</strong>，并不会影响结论。</p>
 <p>如果你理解了这一层，其实我们对级数的定义其实就是SG函数的值。SG函数能够用来将一个状态映射成一个非负整数的值。它的公式写成这样：</p>
-<p><strong>$SG(A) = mex(S) = mex\{SG(B)|A→B}$</strong></p>
+<p><strong>$SG(A) = mex(S) = mex{SG(B)|A→B}$</strong></p>
 <p><strong>式子中的A和B表示状态，表示A状态可以达到B状态，S是A后继状态SG函数值的集合</strong>,mex是一个定义在集合上的函数，返回的是不属于这个集合的最小非负整数。比如mex(0, 1)= 2，mex(0, 2) = 1, mex(0,1, 2, 3)=4。也就是说我们可以通过A能达到的状态的SG函数值推算出A的SG值。</p>
 <p>比如在Nim取子问题当中，没有石子是必败，它没有后继状态，所以SG(0) = 0。1颗石子的时候可以移动到0，所以SG(1) = mex{SG(0)} = 1。这样我们就把Nim取子问题和ICG问题当中胜态的级数对应起来了。一个SG数对应Nim当中的一个石子堆，如果我们有多个石子堆，我们怎么计算开始时候的胜负状态？通过Nim取子问题的推导，我们知道是计算各个石子堆石子数量的亦或值，如果亦或之后的结果为0，那么先手必败，否则先手必胜。同样我们计算所有状态的SG值，如果最后得到的SG值亦或的结果为0，说明先手必败，否则先手必胜。</p>
 <p>SG定理：</p>
