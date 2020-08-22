@@ -32,7 +32,7 @@
 <meta property="og:description" content="快速幂，质数筛，GCD（最小公因数），同余方程，逆元，中国剩余定理">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-12T02:30:41.000Z">
-<meta property="article:modified_time" content="2020-08-21T14:38:39.067Z">
+<meta property="article:modified_time" content="2020-08-22T04:03:33.589Z">
 <meta property="article:author" content="Fraunhofer0126">
 <meta property="article:tag" content="快速幂">
 <meta property="article:tag" content="质数筛">
@@ -329,7 +329,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-21 22:38:39" itemprop="dateModified" datetime="2020-08-21T22:38:39+08:00">2020-08-21</time>
+                <time title="Modified: 2020-08-22 12:03:33" itemprop="dateModified" datetime="2020-08-22T12:03:33+08:00">2020-08-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -382,10 +382,10 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">quickPow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>, base = a;</span><br><span class="line">    <span class="keyword">while</span> (b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span> != <span class="number">0</span>)</span><br><span class="line">            ans *= base;</span><br><span class="line">            </span><br><span class="line">        base *= base;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="快速幂取余"><a href="#快速幂取余" class="headerlink" title="快速幂取余"></a>快速幂取余</h2><p>取模运算的乘法规则</p>
 <blockquote>
-<p><strong>(a × b) % p = ((a % p) × (b % p)) % p</strong></p>
+<p><em>(a × b) % p= ((a % p × (b % p)) % p</em></p>
 </blockquote>
 <h3 id="HDU2035"><a href="#HDU2035" class="headerlink" title="HDU2035"></a><a target="_blank" rel="noopener" href="https://vjudge.net/problem/HDU-2035">HDU2035</a></h3><p>只需要用到最后三位，但如果算出结果再模1000，计算量非常大</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">quickPow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>, base = a, p = <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">while</span> (b) &#123;</span><br><span class="line">        <span class="comment">//二进制的与，用来替换b%2==1</span></span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) </span><br><span class="line">            ans = ans * base % p;</span><br><span class="line">        base = base * base % p;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">quickPow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>, base = a, p= <span class="number">1000</span>;</span><br><span class="line">    <span class="keyword">while</span> (b) &#123;</span><br><span class="line">        <span class="comment">//二进制的与，用来替换b%2==1</span></span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) </span><br><span class="line">            ans = ans * base % p</span><br><span class="line">        base = base * base % p</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
 <hr>
@@ -409,10 +409,10 @@
 </ul>
 <ul>
 <li>来点模运算法则<blockquote>
-a ≡ b(mod p) 读作a关于b 模p同余 即 a%p == b%p<br/>
-a + b ≡ (a%p + b%p)(mod p)<br/>
-a - b ≡ (a%p - b%p)(mod p)<br/>
-a × b ≡ (a%p × b%p)(mod p)<br/>
+a ≡ b(mod p) 读作a关于b 模p同余 即 a%p== b%p<br/>
+a + b ≡ (a%p+ b%p)(mod p)<br/>
+a - b ≡ (a%p- b%p)(mod p)<br/>
+a × b ≡ (a%p× b%p)(mod p)<br/>
 </blockquote>
 
 
@@ -422,7 +422,7 @@ a × b ≡ (a%p × b%p)(mod p)<br/>
 <ul>
 <li>辗转相除法的复杂度是O(logn),小于更相减损术O(n)<br/></li>
 <li>小例题，第k大的公因数<a target="_blank" rel="noopener" href="https://vjudge.net/problem/HDU-5019">HDU5019</a><blockquote>
-<p>定理1: gcd(a,b) * lcm(a<em>b) = a</em>b<br/><br>定理2: 若r = gcd(a, b), 且a = m<em>r, b = n</em>r, 则有n和m互质</p>
+<p>定理1: gcd(a,b) * lcm(a<em>b) = a</em>b<br/><br>定理2: 若r = gcd(a, b), 且a = m*r, b = n*r, 则有n和m互质</p>
 </blockquote>
 </li>
 </ul>
@@ -441,25 +441,28 @@ a × b ≡ (a%p × b%p)(mod p)<br/>
 </ul>
 <hr>
 <h2 id="逆元"><a href="#逆元" class="headerlink" title="逆元"></a>逆元</h2><ul>
-<li>为了实现模运算的除法，引入逆元–数论倒数 $a^{-1}$ <br/><br>$a × a^{-1} ≡ 1$(mod p)<br/><br>$a^{-1} ≠ \frac{1}{a}$<br/><br>定义 inv(a) 为逆元<br/><br>有<strong>a ÷ b ≡ (a%p × inv(b)%p)(mod p)</strong></li>
+<li>为了实现模运算的除法，引入逆元–数论倒数 $a^{-1}$ <br/><br>$a × a^{-1} ≡ 1$(mod p)<br/><br>$a^{-1} ≠ \frac{1}{a}$<br/><br>定义 inv(a) 为逆元<br/><br>有**$a ÷ b ≡ (a%p × inv(b)%p)(mod\ p)$**</li>
 </ul>
 <h3 id="费马小定理求逆元-已经把输入的a模了p！！！"><a href="#费马小定理求逆元-已经把输入的a模了p！！！" class="headerlink" title="费马小定理求逆元(已经把输入的a模了p！！！)"></a>费马小定理求逆元(已经把输入的a模了p！！！)</h3><blockquote>
-<p>费马小定理 若p是质数，那么有：$a^{p-1} ≡ 1$ (mod p)<br>则有 inv(a) = $a^{p-2}(mod p)$, 使用快速幂求解</p>
+<p>费马小定理 若p是质数，那么有：$a^{p1} ≡ 1$ (mod p)</p>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">quickPow</span><span class="params">(ll a,ll b, ll p)</span></span>&#123;<span class="comment">//a^b%p  </span></span><br><span class="line">    <span class="keyword">if</span> (b &lt; <span class="number">0</span>) </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    ll res = <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">while</span>(b)&#123;    </span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) </span><br><span class="line">            res = (res*a)%p;     </span><br><span class="line">        a = (a*a)%p;    </span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> res; </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function">ll <span class="title">getInv</span><span class="params">(ll a,ll p)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> quickPow(a,p<span class="number">-2</span>,p); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>费马小求逆元：answer = (a%p*getInv(b, mod))%mod</p>
+<p>则有 inv(a) = $a^{p2}(mod p)$, 使用快速幂求解</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">quickPow</span><span class="params">(ll a,ll b, ll p&#123;<span class="comment">//a^b%p </span></span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">if</span> (b &lt; <span class="number">0</span>) </span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">return</span> <span class="number">0</span>;</span></span></span><br><span class="line"><span class="function"><span class="params">    ll res = <span class="number">1</span>;  </span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">while</span>(b)&#123;    </span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) </span></span></span><br><span class="line"><span class="function"><span class="params">            res = (res*a)%p     </span></span></span><br><span class="line"><span class="function"><span class="params">        a = (a*a)%p    </span></span></span><br><span class="line"><span class="function"><span class="params">        b &gt;&gt;= <span class="number">1</span>;  </span></span></span><br><span class="line"><span class="function"><span class="params">    &#125;  </span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">return</span> res; </span></span></span><br><span class="line"><span class="function"><span class="params">&#125;</span></span></span><br><span class="line"><span class="function"><span class="params"> </span></span></span><br><span class="line"><span class="function"><span class="params">ll getInv(ll a,ll p&#123;  </span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">return</span> quickPow(a,p2,p; </span></span></span><br><span class="line"><span class="function"><span class="params">&#125;</span></span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>费马小求逆元：$answer = (a%p \times getInv(b, mod))%mod$</p>
 </blockquote>
 <h3 id="拓展欧几里得求逆元"><a href="#拓展欧几里得求逆元" class="headerlink" title="拓展欧几里得求逆元"></a>拓展欧几里得求逆元</h3><ul>
 <li>对于方程$a × x + b × y = 1$ 当a,b互质时有解<br/></li>
 <li>x是a关于b的逆元，y是b关于a的逆元<br/><br>有 $a × x = 1$ (mod b)</li>
 </ul>
 <p>(已经把输入的a模了p！！！)</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exGcd</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y,ll &amp;d)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        d = a, x = <span class="number">1</span>, y =<span class="number">0</span>;</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">else</span>&#123;    </span><br><span class="line">        exGcd(b,a%b,y,x,d);    </span><br><span class="line">        y -= x*(a/b);  </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">getInv</span><span class="params">(ll a, ll p)</span></span>&#123;  </span><br><span class="line">    ll d, x, y;  </span><br><span class="line">    exGcd(a,p,x,y,d);  </span><br><span class="line">    <span class="keyword">return</span> d == <span class="number">1</span>?(x%p+p)%p : <span class="number">-1</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exGcd</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y,ll &amp;d)</span></span>&#123;  </span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        d = a, x = <span class="number">1</span>, y =<span class="number">0</span>;</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">else</span>&#123;    </span><br><span class="line">        exGcd(b,a%b,y,x,d);    </span><br><span class="line">        y -= x*(a/b);  </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">getInv</span><span class="params">(ll a, ll p&#123;  </span></span></span><br><span class="line"><span class="function"><span class="params">    ll d, x, y;  </span></span></span><br><span class="line"><span class="function"><span class="params">    exGcd(a,px,y,d);  </span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">return</span> d == <span class="number">1</span>?(x%pp%p: <span class="number">-1</span>; </span></span></span><br><span class="line"><span class="function"><span class="params">&#125;</span></span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>拓欧求(a/b)%mod: answer = (a%p*getInv(b, mod))%mod</p>
+<p>拓欧求(a/b)%mod: $answer = (a%p \times getInv(b, mod))%mod$</p>
 </blockquote>
-<h3 id="线性递归求逆元-好像暂时写错了"><a href="#线性递归求逆元-好像暂时写错了" class="headerlink" title="线性递归求逆元 好像暂时写错了"></a><del>线性递归求逆元</del> 好像暂时写错了</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ll INV[MAX];</span><br><span class="line"><span class="function">ll <span class="title">getInv</span><span class="params">(ll a,ll p)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> INV[a] = a==<span class="number">1</span>?:(p-p/a)*getInv(p%a,p)%p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="线性递归求逆元-好像暂时写错了"><a href="#线性递归求逆元-好像暂时写错了" class="headerlink" title="线性递归求逆元 好像暂时写错了"></a><del>线性递归求逆元</del> 好像暂时写错了</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ll INV[MAX];</span><br><span class="line"><span class="function">ll <span class="title">getInv</span><span class="params">(ll a,ll p&#123;</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">return</span> INV[a] = a==<span class="number">1</span>?:(ppa)*getInv(pa,p%p</span></span></span><br><span class="line"><span class="function"><span class="params">&#125;</span></span></span><br></pre></td></tr></table></figure>
 <hr>
 <hr>
 <h1 id="中国剩余定理-CRT"><a href="#中国剩余定理-CRT" class="headerlink" title="中国剩余定理 CRT"></a>中国剩余定理 CRT</h1><p><strong>请搭配exgcd或者费马小定理服用</strong></p>
@@ -467,11 +470,11 @@ a × b ≡ (a%p × b%p)(mod p)<br/>
 
 <hr>
 <hr>
-<h1 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h1><p>$\Phi(n)=n \times \prod_{i=1}^{n} {(1-\frac{1}{p_i})}$</p>
+<h1 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h1><p>$\varphi(n)=n \times \prod_{i=1}^{n} {(1-\frac{1}{p_i})}$</p>
 <ul>
-<li><strong>对于一个正整数n，小于n且和n互质的正整数（包括1）的个数，记作φ(n)</strong></li>
+<li><strong>对于一个正整数n，小于n且和n互质的正整数（包括1）的个数，记作$\varphi(n)$</strong></li>
 <li><strong>公式中的$p_i$是n的质因子</strong></li>
-<li><strong>$\Phi(1)=1$</strong></li>
+<li><strong>$\varphi(1)=1$</strong></li>
 </ul>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ul>
 <li>朴素做法</li>
@@ -479,27 +482,37 @@ a × b ≡ (a%p × b%p)(mod p)<br/>
 <ol>
 <li><code>ans -= ans/i</code> 就是整个原公式</li>
 <li><code>while(n%i==0) n/=i;</code> 是为了除去重复的质因数，比如$9=3\times3$,9的质因数是3而不是3和3 </li>
-<li><code>if(n&gt;1) ans-=ans/n;</code> 因为有n缩小，会导致for循环终止，而如果结尾出现n&gt;1 ,说明我们还剩一个素因子木有除，比如$\Phi(10)$离开for的时候,ans=5,n=5，还有个质因数5没有除掉</li>
+<li><code>if(n&gt;1) ans-=ans/n;</code> 因为有n缩小，会导致for循环终止，而如果结尾出现n&gt;1 ,说明我们还剩一个素因子木有除，比如$\varphi(10)$离开for的时候,ans=5,n=5，还有个质因数5没有除掉</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">euler</span><span class="params">(<span class="keyword">int</span> n)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> ans = n;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= n; i++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(n % i == <span class="number">0</span>)&#123;  </span><br><span class="line">            ans -= ans / i;  </span><br><span class="line">            <span class="keyword">while</span>(n % i == <span class="number">0</span>)  </span><br><span class="line">                n /= i;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span>(n &gt; <span class="number">1</span>) </span><br><span class="line">        ans -= ans / n;  </span><br><span class="line">    <span class="keyword">return</span> ans;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>(比较快的)打表做法，朴素会TLE</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">euler</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i&lt;maxn; i++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(!E[i])&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; maxn; j += i)&#123;  </span><br><span class="line">                <span class="keyword">if</span>(!E[j])</span><br><span class="line">                    E[j] = j;  </span><br><span class="line">                E[j] -= E[j] / i;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> E[MAX];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">euler</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; maxn; i++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(!E[i])&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; maxn; j += i)&#123;  </span><br><span class="line">                <span class="keyword">if</span>(!E[j])</span><br><span class="line">                    E[j] = j;  </span><br><span class="line">                E[j] -= E[j] / i;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>欧筛+打表</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> is_prime[MAX];</span><br><span class="line"><span class="keyword">int</span> prime_num = <span class="number">0</span>, prime[MAX], E[MAX];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">euler</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(is_prime, <span class="literal">true</span>, <span class="keyword">sizeof</span>(is_prime));</span><br><span class="line">    is_prime[<span class="number">0</span>] = is_prime[<span class="number">1</span>] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(is_prime[i])&#123;</span><br><span class="line">            prime[prime_num++] = i;</span><br><span class="line">            E[i] = i - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; prime_num &amp;&amp; prime[j]*i &lt;= n; j++)&#123;</span><br><span class="line">            is_prime[prime[j]*i] = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(i%prime[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                E[i * prime[j]] = E[i] * prime[j];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                E[i * prime[j]] = E[i] * (prime[j] - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>欧拉函数的性质</li>
 </ul>
 <ol>
-<li>当m,n互质时，有$\Phi(m\times n)=\Phi(m)\times \Phi(n)$</li>
-<li>若gcd(m,n)=d, 有$\Phi(mn)=\frac{d\times\Phi(m)\Phi(n)}{\Phi(d)}$</li>
-<li>若n%m==0,即m|n,有$\Phi(mn)=m\Phi(n)$ 和 $\Phi(m)|\Phi(n)$</li>
-<li>当n为奇数时, $\Phi(2n)=\Phi(n)$</li>
-<li>当n为质数时, $\Phi(n)=n-1$ (定义)</li>
-<li>当n为质数时, $\Phi(n^k)=(n-1)\times n^{k-1}$ (定义)</li>
-<li>小于等于n且整除n的所有正整数的欧拉函数值之和等于n,即$n=\sum_{d|n}\Phi(d)$<br/><br>比如$9=\Phi(1)+\Phi(3)+\Phi(9)=1+2+6$</li>
-<li><strong>欧拉定理</strong> 若gcd(a,m)=1,则$a^{\Phi(m)}\equiv1\ (mod\ m)$</li>
+<li>当m,n互质时，有$\varphi(m\times n)=\varphi(m)\times \varphi(n)$</li>
+<li><strong>积性函数</strong> 若$gcd(m,n)=d$, 有$\varphi(mn)=\frac{d\times\varphi(m)\varphi(n)}{\varphi(d)}$</li>
+<li>若$n\ mod\ m==0$, 即$m|n$ ,有$\varphi(mn)=m\varphi(n)$ 并且 $\varphi(m)|\varphi(n)$</li>
+<li>当n为奇数时, $\varphi(2n)=\varphi(n)$</li>
+<li>当n为质数时, $\varphi(n)=n-1$ (定义)</li>
+<li>当n为质数时, $\varphi(n^k)=(n-1)\times n^{k-1}$ (定义)</li>
+<li>小于等于n且整除n的所有正整数的欧拉函数值之和等于n,即$n=\sum_{d|n}\varphi(d)$<br/><br>比如$9=\varphi(1)+\varphi(3)+\varphi(9)=1+2+6$</li>
+<li><strong>欧拉定理</strong> 若$gcd(a,m)=1$, 则$a^{\varphi(m)}\equiv1\ (mod\ m)$</li>
+<li>对于质数p <ul>
+<li>若$n\ mod\ p= 0$, $\varphi(n\times p)=\varphi(n)\times p$</li>
+<li>若$n\ mod\ p\neq 0$, $\varphi(n\times p)=\varphi(n)\times (p-1)$</li>
+</ul>
+</li>
 </ol>
 <h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1>
     </div>
