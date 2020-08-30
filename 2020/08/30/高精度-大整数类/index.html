@@ -24,21 +24,21 @@
     var CONFIG = {"hostname":"fraunhofer0126.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="线性dp+单调队列优化">
+  <meta name="description" content="大整数类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[习题]DP+单调队列 LOJ10180">
-<meta property="og:url" content="https://fraunhofer0126.github.io/2020/08/08/[%E4%B9%A0%E9%A2%98]DP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/index.html">
+<meta property="og:title" content="高精度-大整数类">
+<meta property="og:url" content="https://fraunhofer0126.github.io/2020/08/30/%E9%AB%98%E7%B2%BE%E5%BA%A6-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%B1%BB/index.html">
 <meta property="og:site_name" content="康桉的个人博(bo)客(ki)">
-<meta property="og:description" content="线性dp+单调队列优化">
+<meta property="og:description" content="大整数类">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-08T07:41:29.000Z">
-<meta property="article:modified_time" content="2020-08-08T09:47:55.309Z">
+<meta property="article:published_time" content="2020-08-30T10:15:11.000Z">
+<meta property="article:modified_time" content="2020-08-30T10:29:50.914Z">
 <meta property="article:author" content="Fraunhofer0126">
-<meta property="article:tag" content="DP">
-<meta property="article:tag" content="单调队列">
+<meta property="article:tag" content="大整数">
+<meta property="article:tag" content="高精度">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://fraunhofer0126.github.io/2020/08/08/[%E4%B9%A0%E9%A2%98]DP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/">
+<link rel="canonical" href="https://fraunhofer0126.github.io/2020/08/30/%E9%AB%98%E7%B2%BE%E5%BA%A6-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%B1%BB/">
 
 
 <script class="page-configurations">
@@ -51,7 +51,7 @@
   };
 </script>
 
-  <title>[习题]DP+单调队列 LOJ10180 | 康桉的个人博(bo)客(ki)</title>
+  <title>高精度-大整数类 | 康桉的个人博(bo)客(ki)</title>
   
 
 
@@ -213,7 +213,7 @@
       
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%83%BD%E7%81%AB%E4%BC%A0%E9%80%92"><span class="nav-number">1.</span> <span class="nav-text">烽火传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">1.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output"><span class="nav-number">1.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.4.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E6%80%9D"><span class="nav-number">1.5.</span> <span class="nav-text">反思</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96%E4%BA%86%E5%A4%8D%E6%9D%82%E5%BA%A6O-n-%E5%90%A6%E5%88%99%E4%B8%A4%E9%87%8D%E5%BE%AA%E7%8E%AFO-mn"><span class="nav-number">1.6.</span> <span class="nav-text">使用单调队列优化了复杂度O(n),否则两重循环O(mn)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AB%E5%B0%BE"><span class="nav-number">2.</span> <span class="nav-text">末尾</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%99%AE%E6%99%AE%E9%80%9A%E9%80%9A%E7%9A%84struct%E5%AE%9E%E7%8E%B0%E5%A4%A7%E6%95%B4%E6%95%B0%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">普普通通的struct实现大整数类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AB%E5%B0%BE"><span class="nav-number">2.</span> <span class="nav-text">末尾</span></a></li></ol></div>
       </section>
       <!--/noindex-->
       
@@ -293,7 +293,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://fraunhofer0126.github.io/2020/08/08/[%E4%B9%A0%E9%A2%98]DP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/">
+    <link itemprop="mainEntityOfPage" href="https://fraunhofer0126.github.io/2020/08/30/%E9%AB%98%E7%B2%BE%E5%BA%A6-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -308,7 +308,7 @@
     
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          [习题]DP+单调队列 LOJ10180
+          高精度-大整数类
         </h1>
 
         <div class="post-meta">
@@ -319,7 +319,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-08-08 15:41:29 / Modified: 17:47:55" itemprop="dateCreated datePublished" datetime="2020-08-08T15:41:29+08:00">2020-08-08</time>
+              <time title="Created: 2020-08-30 18:15:11 / Modified: 18:29:50" itemprop="dateCreated datePublished" datetime="2020-08-30T18:15:11+08:00">2020-08-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -329,10 +329,14 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">算法竞赛</span></a>
                 </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E9%AB%98%E7%B2%BE%E5%BA%A6/" itemprop="url" rel="index"><span itemprop="name">高精度</span></a>
+                </span>
             </span>
 
           
-            <span id="/2020/08/08/%5B%E4%B9%A0%E9%A2%98%5DDP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/" class="post-meta-item leancloud_visitors" data-flag-title="[习题]DP+单调队列 LOJ10180" title="Views">
+            <span id="/2020/08/30/%E9%AB%98%E7%B2%BE%E5%BA%A6-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%B1%BB/" class="post-meta-item leancloud_visitors" data-flag-title="高精度-大整数类" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -347,13 +351,13 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2020/08/08/%5B%E4%B9%A0%E9%A2%98%5DDP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/08/%5B%E4%B9%A0%E9%A2%98%5DDP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/08/30/%E9%AB%98%E7%B2%BE%E5%BA%A6-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%B1%BB/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/08/30/%E9%AB%98%E7%B2%BE%E5%BA%A6-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%B1%BB/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-            <div class="post-description">线性dp+单调队列优化</div>
+            <div class="post-description">大整数类</div>
 
         </div>
       </header>
@@ -364,49 +368,34 @@
     <div class="post-body" itemprop="articleBody">
         <a id="more"></a>
 
-<h1 id="烽火传递"><a href="#烽火传递" class="headerlink" title="烽火传递"></a>烽火传递</h1><p>烽火台是重要的军事防御设施，一般建在交通要道或险要处。一旦有军情发生，则白天用浓烟，晚上有火光传递军情。</p>
-<p>在某两个城市之间有 n 座烽火台，每个烽火台发出信号都有一定的代价。为了使情报准确传递，在连续 m 个烽火台中至少要有一个发出信号。现在输入 n,m 和每个烽火台的代价，请计算总共最少的代价在两城市之间来准确传递情报。</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>第一行是 n,m，表示 n 个烽火台和连续烽火台数 m；<br>第二行 n 个整数表示每个烽火台的代价 ai。</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>输出仅一个整数，表示最小代价。</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><blockquote>
-5 3<br/>
-1 2 5 6 2
-</blockquote>
-
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><blockquote>
-4
-</blockquote>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,l,r,a[N],f[N],q[N&lt;&lt;<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
-
-<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><p>本来做法</p>
-<ol>
-<li>f[i]表示1-i烽火台的最小代价<br>转移方程是这样<blockquote>
-f[i] = min(f[i], f[j] + a[k])<br/>
-i-2m+1 <= j <= i-m<br/>
-i-m+1 <= k <= j+m
-</blockquote></li>
-<li>哎但这样当前状态是不确定的，也就没有所谓“状态转移”<br/><br>网上搬运的代码<br/><br>考虑f[i]是第i个烽火台点火时，1-i烽火台最小代价<blockquote>
-<p>10 3<br/><br>1 2 5 6 2 1 2 5 6 2<br/><br>f[1] = f[0] + a[1] = 0 + a[1] = 1点第一个台子，最小代价就是它本身<br/><br>f[2] = 2 <br/><br>f[3] = 5 <br/><br>f[4] = 6 + 1 = 7 <br/><br>f[5] = 2 + 2 = 4 <br/><br>f[6] = 1 + 4 = 5 <br/><br>f[7] = 2 + 4 = 6 <br/><br>f[8] = 5 + 4 = 9 <br/><br>f[9] = 6 + 5 = 11 <br/><br>f[10] = 2 + 6 = 8 <br/></p>
-</blockquote>
-</li>
-</ol>
-<p><strong>感觉其实有点像lis问题，也是在前面的一定区间内寻找已经解决掉的子问题的最优解</strong></p>
-<blockquote>
-f[i] = min(f[j]) + a[i]<br/>
-i-m <= j <= i-1 
-</blockquote>
-
-
-<h2 id="使用单调队列优化了复杂度O-n-否则两重循环O-mn"><a href="#使用单调队列优化了复杂度O-n-否则两重循环O-mn" class="headerlink" title="使用单调队列优化了复杂度O(n),否则两重循环O(mn)"></a>使用单调队列优化了复杂度O(n),否则两重循环O(mn)</h2><p><strong>这道题并不能用线段树优化，因为树是建在已知数组上的，而求的是f[j]的最小值，f在实时更新，而建树的复杂度是O(2^n)，不可能更新一次建一次</strong><br/></p>
-<p>f[q[l]]代表[i-m,i-1]的f的最小值<br/></p>
-<p>q[l]不能与a[i]重合，所以转移状态应该在入队列之前<br/><br>用数组模拟队列nb</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">()</span></span>&#123;</span><br><span class="line">    l = r = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>( ;l &lt; r &amp;&amp; i - q[l] &gt; m; l++);</span><br><span class="line">        f[i] = f[q[l]] + a[i];</span><br><span class="line">        <span class="keyword">for</span>( ;l &lt; r &amp;&amp; f[q[r]] &gt; f[i]; r--);</span><br><span class="line">        q[++r] = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>最后答案在区间[n-m+1, n]里找</li>
+<h1 id="普普通通的struct实现大整数类"><a href="#普普通通的struct实现大整数类" class="headerlink" title="普普通通的struct实现大整数类"></a>普普通通的struct实现大整数类</h1><ul>
+<li>用struct框起来就好了，数组a[i]用来存储大整数每DLEN*i位</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line"></span><br><span class="line">    dfs();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0x7fffffff</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n - m + <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        ans = min(ans, f[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BigInt</span>&#123;</span></span><br><span class="line">    <span class="comment">//mod和DLEN是匹配的，需要时同时调节</span></span><br><span class="line">    <span class="comment">//len中每一个单位相当于一个DLEN的长度！！</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> <span class="keyword">int</span> mod = <span class="number">10000</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> <span class="keyword">int</span> DLEN = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">1000</span>], len;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//成员函数见下，把他们全部放进来</span></span><br><span class="line">    <span class="comment">//....</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>构造函数</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认构造函数</span></span><br><span class="line">BigInt()&#123;</span><br><span class="line">    <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(a));</span><br><span class="line">    len = <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//整数构造函数</span></span><br><span class="line">BigInt(<span class="keyword">int</span> v)&#123;</span><br><span class="line">    <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(a));</span><br><span class="line">    len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        a[len++] = v % mod;</span><br><span class="line">        v /= mod;</span><br><span class="line">    &#125;<span class="keyword">while</span>(v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//字符串构造函数</span></span><br><span class="line">BigInt(<span class="keyword">const</span> <span class="keyword">char</span> s[])&#123;</span><br><span class="line">    <span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));</span><br><span class="line">    <span class="keyword">int</span> L = <span class="built_in">strlen</span>(s);</span><br><span class="line">    len = L / DLEN;</span><br><span class="line">    <span class="keyword">if</span>(L % DLEN)</span><br><span class="line">        len++;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = L<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i -= DLEN)&#123;</span><br><span class="line">        <span class="comment">//k用来标记每DLEN长度段的首位字母，i是末位字母</span></span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">0</span>, k = i - DLEN + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(k &lt; <span class="number">0</span>)</span><br><span class="line">            k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = k; j &lt;= i; j++)</span><br><span class="line">            t = t*<span class="number">10</span> + s[j]-<span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        a[index++] = t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>加法运算符重载还是很好理解的</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">BigInt <span class="keyword">operator</span> + (<span class="keyword">const</span> BigInt &amp;b) <span class="keyword">const</span>&#123;</span><br><span class="line">    BigInt res;</span><br><span class="line">    res.len = max(len, b.len);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= res.len; i++)</span><br><span class="line">        res.a[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; res.len; i++)&#123;</span><br><span class="line">        res.a[i] += ((i&lt;len)?a[i]:<span class="number">0</span>) + ((i&lt;b.len)?b.a[i]:<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//进位啊！！！！！！！！！！！</span></span><br><span class="line">        res.a[i+<span class="number">1</span>] += res.a[i]/mod;</span><br><span class="line">        res.a[i] %= mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(res.a[res.len] &gt; <span class="number">0</span>)</span><br><span class="line">        res.len++;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>乘法运算符重载，可以手算竖式乘法来理解</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">BigInt <span class="keyword">operator</span> * (<span class="keyword">const</span> BigInt &amp;b) <span class="keyword">const</span>&#123;</span><br><span class="line">    BigInt res;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> up = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; b.len; j++)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = a[i]*b.a[j] + res.a[i+j] + up;</span><br><span class="line">            res.a[i+j] = temp%mod;</span><br><span class="line">            <span class="comment">//up属于是模拟进位</span></span><br><span class="line">            up = temp/mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(up != <span class="number">0</span>)</span><br><span class="line">            res.a[i+b.len] = up;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res.len = len + b.len;</span><br><span class="line">    <span class="comment">//去除前导0</span></span><br><span class="line">    <span class="comment">//而且可能有多次运算，需要规范好位数</span></span><br><span class="line">    <span class="keyword">while</span>(res.a[res.len<span class="number">-1</span>] == <span class="number">0</span> &amp;&amp; res.len &gt; <span class="number">1</span>)</span><br><span class="line">        res.len--;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>输出函数，<strong>注意循环内printf的位数是随DLEN而变的</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,a[len<span class="number">-1</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = len - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%04d&quot;</span>,a[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>随便测试</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> s1[<span class="number">20</span>], s2[<span class="number">20</span>];</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;s1&gt;&gt;s2;</span><br><span class="line">    BigInt a(s1), b(s2);</span><br><span class="line">    <span class="function">BigInt <span class="title">c</span><span class="params">(a*b)</span></span>;</span><br><span class="line">    c.print();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<hr>
 <h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1>
     </div>
 
@@ -437,7 +426,7 @@ i-m <= j <= i-1
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://fraunhofer0126.github.io/2020/08/08/[%E4%B9%A0%E9%A2%98]DP+%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97LOJ10180/" title="[习题]DP+单调队列 LOJ10180">https://fraunhofer0126.github.io/2020/08/08/[习题]DP+单调队列LOJ10180/</a>
+    <a href="https://fraunhofer0126.github.io/2020/08/30/%E9%AB%98%E7%B2%BE%E5%BA%A6-%E5%A4%A7%E6%95%B4%E6%95%B0%E7%B1%BB/" title="高精度-大整数类">https://fraunhofer0126.github.io/2020/08/30/高精度-大整数类/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -467,8 +456,8 @@ i-m <= j <= i-1
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/DP/" rel="tag"># DP</a>
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag"># 单调队列</a>
+              <a href="/tags/%E5%A4%A7%E6%95%B4%E6%95%B0/" rel="tag"># 大整数</a>
+              <a href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" rel="tag"># 高精度</a>
           </div>
 
         
@@ -477,13 +466,10 @@ i-m <= j <= i-1
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/08/lis%E9%97%AE%E9%A2%98/" rel="prev" title="lis问题">
-      <i class="fa fa-chevron-left"></i> lis问题
+    <a href="/2020/08/19/%E4%B9%A0%E9%A2%98-CF645C-%E4%BA%8C%E5%88%86%E6%B3%95/" rel="prev" title="[习题]CF645C 二分法">
+      <i class="fa fa-chevron-left"></i> [习题]CF645C 二分法
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/08/08/%E5%B9%B6%E6%9F%A5%E9%9B%86ufs%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/" rel="next" title="并查集ufs模板总结">
-      并查集ufs模板总结 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -677,6 +663,57 @@ i-m <= j <= i-1
   
 
   
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      const script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 <script>
