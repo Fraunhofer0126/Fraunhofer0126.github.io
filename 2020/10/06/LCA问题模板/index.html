@@ -32,7 +32,7 @@
 <meta property="og:description" content="lca倍增算法">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-10-06T02:22:49.000Z">
-<meta property="article:modified_time" content="2020-10-06T03:32:21.048Z">
+<meta property="article:modified_time" content="2020-10-08T02:43:26.484Z">
 <meta property="article:author" content="Fraunhofer0126">
 <meta property="article:tag" content="倍增算法">
 <meta property="article:tag" content="lca">
@@ -213,7 +213,7 @@
       
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%80%8D%E5%A2%9E%E7%AE%97%E6%B3%95-%E6%97%B6%E9%97%B4%E6%88%B3code-HDU2586"><span class="nav-number">1.</span> <span class="nav-text">倍增算法-时间戳code HDU2586</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">核心代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%85%E4%B8%8D%E5%8F%AF%E5%B0%91%E7%9A%84%E6%97%B6%E9%97%B4%E6%88%B3%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">必不可少的时间戳预处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AB%E5%B0%BE"><span class="nav-number">2.</span> <span class="nav-text">末尾</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%80%8D%E5%A2%9E%E7%AE%97%E6%B3%95-%E6%97%B6%E9%97%B4%E6%88%B3code-HDU2586"><span class="nav-number">1.</span> <span class="nav-text">倍增算法-时间戳code HDU2586</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">核心代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%85%E4%B8%8D%E5%8F%AF%E5%B0%91%E7%9A%84%E6%97%B6%E9%97%B4%E6%88%B3%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">必不可少的时间戳预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#main%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">main函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AB%E5%B0%BE"><span class="nav-number">2.</span> <span class="nav-text">末尾</span></a></li></ol></div>
       </section>
       <!--/noindex-->
       
@@ -229,7 +229,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -242,7 +242,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -317,10 +317,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-10-06 10:22:49 / Modified: 11:32:21" itemprop="dateCreated datePublished" datetime="2020-10-06T10:22:49+08:00">2020-10-06</time>
+              <time title="Created: 2020-10-06 10:22:49" itemprop="dateCreated datePublished" datetime="2020-10-06T10:22:49+08:00">2020-10-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-10-08 10:43:26" itemprop="dateModified" datetime="2020-10-08T10:43:26+08:00">2020-10-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -366,6 +372,7 @@
 
 <h1 id="倍增算法-时间戳code-HDU2586"><a href="#倍增算法-时间戳code-HDU2586" class="headerlink" title="倍增算法-时间戳code HDU2586"></a>倍增算法-时间戳code HDU2586</h1><p>1.数组D储存深度，保证 $D(u) &lt;= D(v)$<br>2.如果u是v祖先，直接返回u<br>3.只要u不是v的祖先，就沿着u向上爬$2^i$级，知道爬到LCA(u,v)的儿子为止，时间复杂度$log(n)$<br>4.只需要对一个点(深度小的点)做循环<br>5.两点间的距离就是$Dist[u]+Dist[v]-2*Dist[LCA(u,v)]$</p>
 <h2 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h2><ul>
+<li>时间戳是按照dfs序遍历的</li>
 <li>判断两个节点有无祖孙关系，只需要看看时间戳是否一个被包含在另一个内</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isAncestor</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">return</span> (Tin[u] &lt;= Tin[v] &amp;&amp; Tout[u] &gt;= Tout[v]); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -381,13 +388,11 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> N, L, Tin[MAXN], Tout[MAXN], timer;</span><br><span class="line"><span class="keyword">int</span> UP[MAXN][<span class="number">18</span>]; </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> v, k;</span><br><span class="line">  Edge(<span class="keyword">int</span> _v, <span class="keyword">int</span> _k) : v(_v), k(_k) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;Edge&gt; G[MAXN];</span><br><span class="line"><span class="keyword">int</span> Dist[MAXN], D[MAXN]; <span class="comment">// Dist储存到root根节点的距离，D储存深度</span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>dfs 记录时间戳、 </li>
+<li>dfs 记录时间戳</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">    Tin[u] = ++timer; <span class="comment">//进入时间戳</span></span><br><span class="line">    UP[u][<span class="number">0</span>] = fa;     <span class="comment">//向上跳2^0=1步，也就是自己的直接父亲就是fa</span></span><br><span class="line">    <span class="keyword">if</span>(u)</span><br><span class="line">        D[u] = D[fa] + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; L; i++)</span><br><span class="line">        UP[u][i] = UP[UP[u][i - <span class="number">1</span>]][i - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[u].size(); i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> Edge&amp; e = G[u][i];</span><br><span class="line">        <span class="keyword">if</span> (e.v != fa) &#123; <span class="comment">//如果相连的不是父节点，就继续dfs，防止倒流</span></span><br><span class="line">            Dist[e.v] = Dist[u] + e.k;</span><br><span class="line">            dfs(e.v, u);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Tout[u] = ++timer; <span class="comment">//离开时间戳</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>L用来标记二叉树的</li>
-</ul>
+<h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><p>1.连边<br>2.dfs遍历 $dfs(根节点，根节点)$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span></span><br><span class="line">    <span class="keyword">int</span> T, M, u, v, k;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;T;</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">            G[i].clear();</span><br><span class="line">        <span class="built_in">memset</span>(UP, <span class="number">0</span>, <span class="keyword">sizeof</span>(UP));</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;N&gt;&gt;M;</span><br><span class="line">        L = <span class="built_in">ceil</span>(log2(N)); <span class="comment">//这个意义见上文</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;k, u--, v--;</span><br><span class="line">            G[u].emplace_back(v, k), G[v].emplace_back(u, k);</span><br><span class="line">        &#125;</span><br><span class="line">        Dist[<span class="number">0</span>] = <span class="number">0</span>, D[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dfs(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M; i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v, u--, v--;</span><br><span class="line">            <span class="keyword">int</span> w = LCA(u, v);</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;Dist[u]+Dist[v]<span class="number">-2</span>*Dist[w]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1>
@@ -463,7 +468,10 @@
     <a href="/2020/09/27/%E4%B9%A0%E9%A2%98-HDU6180-%E8%B4%AA%E5%BF%83-multiset/" rel="prev" title="[习题] HDU6180 贪心&multiset">
       <i class="fa fa-chevron-left"></i> [习题] HDU6180 贪心&multiset
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/08/%E5%B7%AE%E5%88%86/" rel="next" title="差分">
+      差分 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
