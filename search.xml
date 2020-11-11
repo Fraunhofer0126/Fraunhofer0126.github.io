@@ -1,61 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>矩阵分析-最优化理论笔记</title>
-    <url>/2020/11/10/%E7%9F%A9%E9%98%B5%E5%88%86%E6%9E%90-%E6%9C%80%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<a id="more"></a>
-
-<h1 id="数学知识"><a href="#数学知识" class="headerlink" title="数学知识"></a>数学知识</h1><ul>
-<li>梯度 $grad f(x_0,y_0) = f_x(x_0,y_0)i + f_y(x_0,y_0)j$</li>
-<li>方向导数 $\frac{\partial f}{\partial l} |_{(x_0,y_0)} = gradf(x_0,y_0) * e_l = |gradf(x_0,y_0)|cos\theta$, </br><br>其中$e_l = (cos\alpha, cos\beta)$,是和$l$同方向的单位向量</li>
-<li>由上可知，$|\theta| \leq 90$时，方向导数，也就是函数沿着$e_l$方向的变化量为正, 函数的变化量是增加的。</br><br>于是，梯度方向是函数<strong>增加</strong>最快的方向</li>
-<li>向量函数的Taylor展开:</br><br>$F(x)=F(x^*)+\Delta F(x)^T|<em>{x=x^*}(x-x^*)+\frac{1}{2}(x-x^*)^T \Delta^2 F(x)|</em>{x=x^*}(x-x^*)+…$</br></li>
-</ul>
-<h2 id="Hessian矩阵相关"><a href="#Hessian矩阵相关" class="headerlink" title="Hessian矩阵相关"></a>Hessian矩阵相关</h2><ol>
-<li>若Hessian阵特征值全为正，则局部有极小值</li>
-<li>若Hessian阵特征值全为负，则局部有极大值</li>
-<li>若Hessian阵特征值有正有负，不定二次型，则局部有鞍点</li>
-</ol>
-<ul>
-<li>证明–对Hessian矩阵$A$做正交对角化$x=By$, $B$恰好正交对角化$A$, 且有$B^T=B^{-1}$</br><br>$x^TAx = y^T\Lambda y = \lambda_1y_1^2+\lambda_2y_2^2+…+\lambda_ny_n^2$</br><br>而二阶梯度种二次型的值就取决于Hessian阵的各个特征值是否同时同号</br></li>
-</ul>
-<ol start="4">
-<li><p>$F(x)$是二阶连续可导函数时，其混合偏导相等，Hessian矩阵是对称矩阵</br><br>对称矩阵的特征向量正交，因此Hessian矩阵的特征向量正交</p>
-</li>
-<li><p>若$F(x)$为二次函数，$\Delta^2F(x)$就是它的Hessian矩阵</p>
-</li>
-</ol>
-<ul>
-<li>$F(x)$在其Hessian矩阵较大特征值对应的特征方向最陡峭（待考究）</li>
-</ul>
-<h1 id="下降法"><a href="#下降法" class="headerlink" title="下降法"></a>下降法</h1><ol>
-<li><strong>梯度下降</strong> 只利用了一阶梯度信息</br></li>
-</ol>
-<ul>
-<li>基本思想是$\Delta x_k = x_{k+1}-x_k = \alpha_k p_k$, 即$x_{k+1} =x_k+\alpha_k p_k$其中$p_k$是搜索 方向, $\alpha_k$ 是学习率。</br><br>$F(x)$一阶近似$F(x_{k+1}) = F(x_k+\Delta x_k) \approx F(x_k) + g_k^T \Delta x_k$ </br><br>选择$p_k = -g_k$ </br><br>有:<strong>$x_{k+1} = x_k-\alpha_k g_k$</strong></br></li>
-</ul>
-<p><strong>Tips</strong></p>
-<ul>
-<li><p>$\alpha_k$可以选择固定值，也可以每次都沿直线最小化$\alpha_k = -\frac{g_k^T p_k}{p_k^T A_k p_k}$</br><br>推导: $\frac{dF(x_k+\alpha_k p_k)}{d\alpha_k}=g_k^Tp_k+\alpha_k p_k^T A_k p_k$，(将$x=x+\alpha_k p_k$代入二阶Taylor展开,再对$\alpha_k$求导)</br><br>令其为0即可得$\alpha_k$。</p>
-</li>
-<li><p>$\frac{dF(x_k+\alpha_k p_k)}{d\alpha_k}=\frac{dF(x_{k+1})}{d\alpha_k}=g_{k+1}^T \frac{d(x_k+\alpha_k p_k)}{d\alpha_k}=g_{k+1}^T p_k$(注意这里是$g_{k+1}$)</br><br>因为直线最小化需要$\frac{d(F(x_k+\alpha_k p_k))}{d\alpha_k}=0$, 故下一次下降方向与这一次正交。</p>
-</li>
-</ul>
-<ol>
-<li><p><strong>牛顿法</strong> 如果再利用二阶梯度信息，可能能找到更好的方向</br><br>$F(x)$二阶近似$F(x_{k+1}) = F(x_k+\Delta x_k) \approx F(x_k) + g_k^T \Delta x_k + \frac{1}{2}\Delta x_k^T A_k \Delta x_k$ </br><br>($A_k$就是Hessian矩阵)</br><br>对这个近似出来的函数求梯度，然后令梯度为0，得到$g_k+A_k \Delta x_k = 0$($A_k$对称)</br><br>于是$\Delta x_k = - A_k^{-1}g_k$</br><br>最后$x_{k+1} = x_k - A_k^{-1}g_k$</p>
-</li>
-<li><p><strong>共轭梯度法</strong> </br></p>
-</li>
-</ol>
-<ul>
-<li>针对二次函数$F(x)=\frac{1}{2}x^T A x+d^Tx+c$</br><br>$\Delta F(x)=Ax+d, \Delta^2F(x)=A$</li>
-<li>若一组向量$p_k^T,p_j$关于一个正定矩阵A共轭，则$p_k^TAp_j=0, k\neq j$</br><br>根据Hessian矩阵特征向量正交，得Hessian矩阵的特征向量共轭</li>
-<li>迭代$k$次梯度变化$\Delta g_k=A\Delta x_k$, 又有$\Delta x_k=\alpha_k p_k$</br><br>于是共轭条件可以改写:</br><br>$p_k^TAp_j=0=\alpha_k p_k^TAp_j=\Delta x_k^TAp_j=(A\Delta x_k)^Tp_j=\Delta g_k^Tp_j, k\neq j$</li>
-<li>还没写完QAQ<h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1></li>
-</ul>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>矩阵分析-最优化理论笔记</title>
+      <link href="/2020/11/10/%E7%9F%A9%E9%98%B5%E5%88%86%E6%9E%90-%E6%9C%80%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E7%AC%94%E8%AE%B0/"/>
+      <url>/2020/11/10/%E7%9F%A9%E9%98%B5%E5%88%86%E6%9E%90-%E6%9C%80%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><h1 id="数学知识"><a href="#数学知识" class="headerlink" title="数学知识"></a>数学知识</h1><ul><li>梯度 $grad f(x_0,y_0) = f_x(x_0,y_0)i + f_y(x_0,y_0)j$</li><li>方向导数 $\frac{\partial f}{\partial l} |_{(x_0,y_0)} = gradf(x_0,y_0) * e_l = |gradf(x_0,y_0)|cos\theta$, </br><br>其中$e_l = (cos\alpha, cos\beta)$,是和$l$同方向的单位向量</li><li>由上可知，$|\theta| \leq 90$时，方向导数，也就是函数沿着$e_l$方向的变化量为正, 函数的变化量是增加的。</br><br>于是，梯度方向是函数<strong>增加</strong>最快的方向</li><li>向量函数的Taylor展开:</br><br>$F(x)=F(x^*)+\Delta F(x)^T|<em>{x=x^*}(x-x^*)+\frac{1}{2}(x-x^*)^T\Delta^2F(x)|</em>{x=x^*}(x-x^*)+…$ </br></li></ul><h2 id="Hessian矩阵相关"><a href="#Hessian矩阵相关" class="headerlink" title="Hessian矩阵相关"></a>Hessian矩阵相关</h2><ol><li>若Hessian阵特征值全为正，则局部有极小值</li><li>若Hessian阵特征值全为负，则局部有极大值</li><li>若Hessian阵特征值有正有负，不定二次型，则局部有鞍点</li></ol><ul><li>证明–对Hessian矩阵$A$做正交对角化$x=By$, $B$恰好正交对角化$A$, 且有$B^T=B^{-1}$</br><br>$x^TAx = y^T\Lambda y = \lambda_1y_1^2+\lambda_2y_2^2+…+\lambda_ny_n^2$</br><br>而二阶梯度种二次型的值就取决于Hessian阵的各个特征值是否同时同号</br></li></ul><ol start="4"><li><p>$F(x)$是二阶连续可导函数时，其混合偏导相等，Hessian矩阵是对称矩阵</br><br>对称矩阵的特征向量正交，因此Hessian矩阵的特征向量正交</p></li><li><p>若$F(x)$为二次函数，$\Delta^2F(x)$就是它的Hessian矩阵</p></li></ol><ul><li>$F(x)$在其Hessian矩阵较大特征值对应的特征方向最陡峭（待考究）</li></ul><h1 id="下降法"><a href="#下降法" class="headerlink" title="下降法"></a>下降法</h1><ol><li><strong>梯度下降</strong> 只利用了一阶梯度信息</br></li></ol><ul><li>基本思想是$\Delta x_k = x_{k+1}-x_k = \alpha_k p_k$, 即$x_{k+1} =x_k+\alpha_k p_k$其中$p_k$是搜索 方向, $\alpha_k$ 是学习率。</br><br>$F(x)$一阶近似$F(x_{k+1}) = F(x_k+\Delta x_k) \approx F(x_k) + g_k^T \Delta x_k$ </br><br>选择$p_k = -g_k$ </br><br>有:<strong>$x_{k+1} = x_k-\alpha_k g_k$</strong></br></li></ul><p><strong>Tips</strong></p><ul><li><p>$\alpha_k$可以选择固定值，也可以每次都沿直线最小化$\alpha_k = -\frac{g_k^T p_k}{p_k^T A_k p_k}$</br><br>推导: $\frac{dF(x_k+\alpha_k p_k)}{d\alpha_k}=g_k^Tp_k+\alpha_k p_k^T A_k p_k$，(将$x=x+\alpha_k p_k$代入二阶Taylor展开,再对$\alpha_k$求导)</br><br>令其为0即可得$\alpha_k$。</p></li><li><p>$\frac{dF(x_k+\alpha_k p_k)}{d\alpha_k}=\frac{dF(x_{k+1})}{d\alpha_k}=g_{k+1}^T \frac{d(x_k+\alpha_k p_k)}{d\alpha_k}=g_{k+1}^T p_k$(注意这里是$g_{k+1}$)</br><br>因为直线最小化需要$\frac{d(F(x_k+\alpha_k p_k))}{d\alpha_k}=0$, 故下一次下降方向与这一次正交。</p></li></ul><ol><li><p><strong>牛顿法</strong> 如果再利用二阶梯度信息，可能能找到更好的方向</br><br>$F(x)$二阶近似$F(x_{k+1}) = F(x_k+\Delta x_k) \approx F(x_k) + g_k^T \Delta x_k + \frac{1}{2}\Delta x_k^T A_k \Delta x_k$ </br><br>($A_k$就是Hessian矩阵)</br><br>对这个近似出来的函数求梯度，然后令梯度为0，得到$g_k+A_k \Delta x_k = 0$($A_k$对称)</br><br>于是$\Delta x_k = - A_k^{-1}g_k$</br><br>最后$x_{k+1} = x_k - A_k^{-1}g_k$</p></li><li><p><strong>共轭梯度法</strong> </br></p></li></ol><ul><li>针对二次函数$F(x)=\frac{1}{2}x^T A x+d^Tx+c$</br><br>$\Delta F(x)=Ax+d, \Delta^2F(x)=A$</li><li>若一组向量$p_k^T,p_j$关于一个正定矩阵A共轭，则$p_k^TAp_j=0, k\neq j$</br><br>根据Hessian矩阵特征向量正交，得Hessian矩阵的特征向量共轭</li><li>迭代$k$次梯度变化$\Delta g_k=A\Delta x_k$, 又有$\Delta x_k=\alpha_k p_k$</br><br>于是共轭条件可以改写:</br><br>$p_k^TAp_j=0=\alpha_k p_k^TAp_j=\Delta x_k^TAp_j=(A\Delta x_k)^Tp_j=\Delta g_k^Tp_j, k\neq j$</li><li>还没写完QAQ<h1 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h1></li></ul>]]></content>
+      
+      
       <categories>
-        <category>矩阵分析</category>
+          
+          <category> 矩阵分析 </category>
+          
       </categories>
-  </entry>
+      
+      
+    </entry>
+    
+    
+  
+  
 </search>
