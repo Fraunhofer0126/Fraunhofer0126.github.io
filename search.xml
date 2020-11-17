@@ -10,7 +10,7 @@
 <li>方向导数 $\frac{\partial f}{\partial l} |_{(x_0,y_0)} = e_l^T * gradf(x_0,y_0) = |gradf(x_0,y_0)|cos\theta$, </br><br>其中$e_l = (cos\alpha, cos\beta)$,是和$l$同方向的单位向量</li>
 <li>由上可知，$|\theta| \leq 90$时，方向导数，也就是函数沿着$e_l$方向的变化量为正, 函数的变化量是增加的。</br><br>于是，梯度方向是函数<strong>增加</strong>最快的方向</li>
 <li>向量函数的Taylor展开:</br><br>$F(x)=F(x_\theta)+\Delta F(x)^T | _{x=x_\theta}(x- x_\theta)+ \frac{1}{2}(x- x_\theta)^T\Delta^2F(x)| _{x = x_\theta}(x - x_\theta)+…$ </br></li>
-<li>设$A$是$n$阶实对称矩阵，记$\lambda_{max}, \lambda_{min}$分别是$A$中所有特征值中的最大值与最小值，则$\lambda_{max}X^TX \leq X^TAX \leq \lambda_{min}X^TX$</br><br>当$||x||<em>2=1$ 时函数$F(x)=x^TAx$ 最大值是 $\lambda</em>{max}$， 最小值是$\lambda_{min}$.</li>
+<li>设$A$是$n$阶实对称矩阵，记$\lambda_{max}, \lambda_{min}$分别是$A$中所有特征值中的最大值与最小值，则$\lambda_{max}X^TX \leq X^TAX \leq \lambda_{min}X^TX$</br><br>当$||x||_2 =1$ 时函数$F(x)= x^TAx$ 最大值是 $\lambda _{max}$， 最小值是 $\lambda _{min}$.</li>
 </ul>
 <h2 id="Hessian矩阵相关"><a href="#Hessian矩阵相关" class="headerlink" title="Hessian矩阵相关"></a>Hessian矩阵相关</h2><ol>
 <li>若Hessian阵特征值全为正，则局部有极小值</li>
