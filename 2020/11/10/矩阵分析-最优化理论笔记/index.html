@@ -32,7 +32,7 @@
 <meta property="og:description" content="to be continued">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-10T10:34:36.000Z">
-<meta property="article:modified_time" content="2020-11-18T01:31:04.905Z">
+<meta property="article:modified_time" content="2020-12-12T01:30:52.258Z">
 <meta property="article:author" content="Fraunhofer0126">
 <meta name="twitter:card" content="summary">
 
@@ -230,7 +230,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -326,7 +326,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-11-18 09:31:04" itemprop="dateModified" datetime="2020-11-18T09:31:04+08:00">2020-11-18</time>
+                <time title="Modified: 2020-12-12 09:30:52" itemprop="dateModified" datetime="2020-12-12T09:30:52+08:00">2020-12-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -395,6 +395,7 @@
 <li><p>$F(x)$在其Hessian矩阵较大特征值对应的特征方向最陡峭，</br><br>$F(x)$的曲率为$\frac{p^T\Delta^2F(x)p}{||p||_2^2}, p$为某方向（待求的曲率方向）对于分子项，可根据<strong>数学知识</strong>得，最大值在$F(x)$的Hessian矩阵特征值大的对应的特征向量方向取，最小值同理。 </p>
 </li>
 </ol>
+<hr>
 <h1 id="下降法"><a href="#下降法" class="headerlink" title="下降法"></a>下降法</h1><h2 id="梯度下降-只利用了一阶梯度信息"><a href="#梯度下降-只利用了一阶梯度信息" class="headerlink" title="梯度下降 只利用了一阶梯度信息"></a><strong>梯度下降</strong> 只利用了一阶梯度信息</br></h2><ul>
 <li>基本思想是$\Delta x_k = x_{k+1}-x_k = \alpha_k p_k$, 即$x_{k+1} =x_k+\alpha_k p_k$其中$p_k$是搜索 方向, $\alpha_k$ 是学习率。</br><br>$F(x)$一阶近似$F(x_{k+1}) = F(x_k+\Delta x_k) \approx F(x_k) +g_k^T \Delta x_k$ </br><br>选择$p_k = -g_k$ </br><br>有:<strong>$x_{k+1} = x_k-\alpha_k g_k$</strong></br></li>
 </ul>
