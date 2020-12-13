@@ -228,7 +228,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -362,7 +362,6 @@
     
     <div class="post-body" itemprop="articleBody">
         <a id="more"></a>
-
 <h1 id="一-前中后序遍历相关问题"><a href="#一-前中后序遍历相关问题" class="headerlink" title="一. 前中后序遍历相关问题"></a>一. 前中后序遍历相关问题</h1><h2 id="给定前序和中序求后序"><a href="#给定前序和中序求后序" class="headerlink" title="给定前序和中序求后序"></a>给定前序和中序求后序</h2><ul>
 <li>假设前序字符串是pre，中序字符串是in</li>
 </ul>
@@ -374,7 +373,6 @@
 <li>dfs()遍历完左右子树后输出当前根，这是后序遍历的特点，可以return一下</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> l1, <span class="keyword">int</span> r1, <span class="keyword">int</span> l2, <span class="keyword">int</span> r2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l2; i &lt;= r2; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(in[i] == pre[l1])&#123;</span><br><span class="line">            dfs(l1+<span class="number">1</span>, l1+i-l2, l2, i<span class="number">-1</span>);</span><br><span class="line">            dfs(l1+i-l2+<span class="number">1</span>, r1, i+<span class="number">1</span>, r2);</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;pre[l1];</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="给定中序和后序求前序"><a href="#给定中序和后序求前序" class="headerlink" title="给定中序和后序求前序"></a>给定中序和后序求前序</h2><ul>
 <li>假设中序字符串是in，后序字符串是post</li>
 </ul>
@@ -386,7 +384,6 @@
 <li>分别dfs左右子树</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> l1, <span class="keyword">int</span> r1, <span class="keyword">int</span> l2, <span class="keyword">int</span> r2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = l1; i &lt;= r1; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(in[i] == post[r2])&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;post[r2];</span><br><span class="line">            dfs(l1, i<span class="number">-1</span>, l2, r2-r1<span class="number">-1</span>+i);</span><br><span class="line">            dfs(i+<span class="number">1</span>, r1, r2-r1+i,r2<span class="number">-1</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="给定前序和后序求…不会真有人以为能求中序序列吧不会吧不会吧"><a href="#给定前序和后序求…不会真有人以为能求中序序列吧不会吧不会吧" class="headerlink" title="给定前序和后序求…不会真有人以为能求中序序列吧不会吧不会吧"></a>给定前序和后序求…不会真有人以为能求中序序列吧不会吧不会吧</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1229">luogu P1229</a> 题目大意：给出前序和后序序列，问有多少种中序序列<br>容易观察，出现多种中序序列的可能性发生在只有一个儿子的节点上，这是中序遍历的性质</p>
 <ol>
 <li>对于根root, 若仅有一个儿子，有$ans(root) = 2 * ans(root-&gt;son)$</li>

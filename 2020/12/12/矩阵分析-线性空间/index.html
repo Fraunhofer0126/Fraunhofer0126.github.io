@@ -32,7 +32,7 @@
 <meta property="og:description" content="to be continued">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-12T00:46:12.000Z">
-<meta property="article:modified_time" content="2020-12-12T03:17:29.525Z">
+<meta property="article:modified_time" content="2020-12-12T08:50:31.734Z">
 <meta property="article:author" content="Fraunhofer0126">
 <meta name="twitter:card" content="summary">
 
@@ -227,7 +227,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -317,7 +317,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-12-12 08:46:12 / Modified: 11:17:29" itemprop="dateCreated datePublished" datetime="2020-12-12T08:46:12+08:00">2020-12-12</time>
+              <time title="Created: 2020-12-12 08:46:12 / Modified: 16:50:31" itemprop="dateCreated datePublished" datetime="2020-12-12T08:46:12+08:00">2020-12-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -361,8 +361,6 @@
     
     <div class="post-body" itemprop="articleBody">
         <a id="more"></a>
-
-
 <h1 id="向量空间-线性空间"><a href="#向量空间-线性空间" class="headerlink" title="向量空间/线性空间"></a>向量空间/线性空间</h1><p>设V是一个非空集合，F是一个域。若：</p>
 <ol>
 <li>在V中定义了一种运算，称为加法，即对V中任意两个元素α与β都按<strong>某一法则</strong>对应于V内<strong>惟一确定</strong>的一个元素α+β，称为α与β的和。</li>
@@ -389,7 +387,7 @@
 <li>$d(x,z)\leq d(x,y)+d(y,z)$ <strong>三角不等式</strong></li>
 </ol>
 </li>
-<li>度量空间中的柯西列：给定一个任意度量空间(X,d),一个序列<br>$$x_1,x_2,x_3,…$$<br>被称为柯西列，如果对于任意正实数$r&gt;0$,存在一个正整数$N$使得对于所有整数$m,n&gt;N$,都有<br>$$d(x_m,x_n)&lt;r$$</li>
+<li>度量空间中的柯西列：给定一个任意度量空间(X,d),一个序列<script type="math/tex; mode=display">x_1,x_2,x_3,...</script>被称为柯西列，如果对于任意正实数$r&gt;0$,存在一个正整数$N$使得对于所有整数$m,n&gt;N$,都有<script type="math/tex; mode=display">d(x_m,x_n)<r</script></li>
 </ul>
 <h2 id="完备度量空间"><a href="#完备度量空间" class="headerlink" title="完备度量空间"></a>完备度量空间</h2><p><strong>完备度量空间</strong>$X$中的任何柯西序列都收敛在该空间$X$一点。</p>
 <ul>
@@ -400,42 +398,38 @@
 </ol>
 </li>
 </ul>
-<h2 id="函数空间"><a href="#函数空间" class="headerlink" title="函数空间"></a>函数空间</h2><p>设(V, F)是一个向量空间，M是所有函数的集合：𝐷→𝑉，其中D是任意集合。M上向量加法定义为：$(f+g)(d)=f(d)+g(d)$, $\forall d \in D, \forall f,g \in M$ </br><br>标量乘法定义为：$(af)(d)=af(d)$, $\forall a \in F, \forall d \in D, \forall f \in M$ </br><br>通过这些运算，M是F上的一个向量空间，表示为$(M, F)$</p>
+<h2 id="函数空间"><a href="#函数空间" class="headerlink" title="函数空间"></a>函数空间</h2><p>设(V, F)是一个向量空间，M是所有函数的集合：𝐷→𝑉，其中D是任意集合。M上向量加法定义为：$(f+g)(d)=f(d)+g(d)$, $\forall d \in D, \forall f,g \in M$ &lt;/br&gt;<br>标量乘法定义为：$(af)(d)=af(d)$,  $\forall a \in F, \forall d \in D, \forall f \in M$ &lt;/br&gt;<br>通过这些运算，M是F上的一个向量空间，表示为$(M, F)$</p>
 <h2 id="直接和"><a href="#直接和" class="headerlink" title="直接和"></a>直接和</h2><p>向量空间$V$是子空间$W1$和$W2$的直接和，表示为$V=W1\bigoplus W2$，当且仅当对于$\forall v \in V$，存在v的唯一表达$v=v1\bigoplus v2, v1 \in W1, v2 \in W2$。显然，$W1 \bigcap W2 = \emptyset$。</p>
-<h2 id="赋范向量空间"><a href="#赋范向量空间" class="headerlink" title="赋范向量空间"></a>赋范向量空间</h2><ul>
+<ul>
+<li>理解：二维平面上，x轴是一个一维线性子空间，y轴是另一个一维线性子空间，平面上所有向量都是这两个子空间中各取一个向量由通过向量加法得到，并且这种表示方式是唯一的。<h2 id="赋范向量空间"><a href="#赋范向量空间" class="headerlink" title="赋范向量空间"></a>赋范向量空间</h2></li>
 <li><p>如果函数$||•||：X→ℝ^+$满足：</p>
 <ol>
-<li><p>$||x||=0$, $if x=0_x(the zero element)$ </p>
-</li>
-<li><p>$||ax||=|a||x|$, $\forall x \in X, \forall a \in ℝ$</p>
-</li>
+<li>$||x||=0$, $if x=0_x(the zero element)$ </li>
+<li>$||ax||=|a||x|$, $\forall x \in X, \forall a \in ℝ$</li>
 <li><p>$||x+y|| \leq ||x||+||y||$</p>
 <p>则称$||•||$,是X上的一个范数，向量空间$(𝑋,ℝ)$则称之为赋范向量空间。<br>注意，是<strong>向量的范数</strong>，$||x||&gt;0$是对向量长度大小的度量，度量就可以由$𝑑(𝑥,𝑦)=||𝑥−𝑦||$定义</p>
 </li>
 </ol>
 </li>
 </ul>
-<h2 id="巴拿赫空间-赋范向量空间-完备性-→Banach-空间"><a href="#巴拿赫空间-赋范向量空间-完备性-→Banach-空间" class="headerlink" title="巴拿赫空间: 赋范向量空间+完备性$→Banach$空间"></a>巴拿赫空间: 赋范向量空间+完备性$→Banach$空间</h2><p>巴拿赫空间是一个具有范数并对此范数完备的向量空间。<br>$$x\in ℝ^n, a\in ℝ, x1+x2,$$<br>$$||x1||=\sqrt{x1^Tx1}, d(x1,x2)=||x1-x2||=\sqrt{(x1-x2)^T(x1-x2)}$$</p>
-<h2 id="内积空间"><a href="#内积空间" class="headerlink" title="内积空间"></a>内积空间</h2><ul>
+<h2 id="巴拿赫空间-赋范向量空间-完备性-→Banach-空间"><a href="#巴拿赫空间-赋范向量空间-完备性-→Banach-空间" class="headerlink" title="巴拿赫空间: 赋范向量空间+完备性$→Banach$空间"></a>巴拿赫空间: 赋范向量空间+完备性$→Banach$空间</h2><p>巴拿赫空间是一个具有范数并对此范数完备的向量空间。</p>
+<script type="math/tex; mode=display">x\in ℝ^n, a\in ℝ, x1+x2,</script><script type="math/tex; mode=display">||x1||=\sqrt{x1^Tx1}, d(x1,x2)=||x1-x2||=\sqrt{(x1-x2)^T(x1-x2)}</script><h2 id="内积空间"><a href="#内积空间" class="headerlink" title="内积空间"></a>内积空间</h2><ul>
 <li><p>如果$\forall u,v,w \in W 和 \lambda \in C, (V,C)$下列性质:</p>
 <ol>
-<li><p>$&lt;u|v&gt;=\overline{&lt;v|u&gt;}$ <strong>共轭对称</strong></p>
-</li>
-<li><p>$&lt;u+v|w&gt;=&lt;u|w&gt;+&lt;v|w&gt;, &lt;u|v+w&gt;=&lt;u|v&gt;+&lt;u|w&gt;$ <strong>半双线性</strong></p>
-</li>
-<li><p>$&lt;\lambda u|v&gt;= \lambda&lt;u|v&gt;, &lt;u|\lambda v&gt;= \bar{\lambda}&lt;u|v&gt;$ <strong>半双线性</strong></p>
-</li>
-<li><p>$&lt;u|v&gt; \geq 0$; $&lt;u|u&gt;=0$, $if u=0$ <strong>非负性</strong></p>
-<p>都满足,我们称以下算子为内积：<br>$$&lt;•|•&gt;: V\times V → C$$</p>
-</li>
+<li>$<u|v>=\overline{<v|u>}$ <strong>共轭对称</strong></li>
+<li>$<u+v|w>=<u|w>+<v|w>, <u|v+w>=<u|v>+<u|w>$ <strong>半双线性</strong></li>
+<li>$&lt;\lambda u|v&gt;= \lambda<u|v>, <u|\lambda v>= \bar{\lambda}<u|v>$ <strong>半双线性</strong></li>
+<li><p>$<u|v> \geq 0$; $<u|u>=0$, $if u=0$ <strong>非负性</strong></p>
+<p>都满足,我们称以下算子为内积：</p>
+<script type="math/tex; mode=display"><•|•>: V\times V → C</script></li>
 </ol>
 </li>
 </ul>
 <ul>
-<li>如果$V$是带有内积的复数内积空间，那么它也是由$||v||=&lt;v|v&gt;^{1/2}$定义范数<br>$$||•||: V→ℝ$$<br>的赋范向量空间。内积空间也是赋范向量空间和度量空间，<br>$$d(v1,v2)=&lt;v1|v2&gt;^{1/2}$$</li>
+<li>如果$V$是带有内积的复数内积空间，那么它也是由$||v||=<v|v>^{1/2}$定义范数<script type="math/tex; mode=display">||•||: V→ℝ</script>的赋范向量空间。内积空间也是赋范向量空间和度量空间，<script type="math/tex; mode=display">d(v1,v2)=<v1|v2>^{1/2}</script></li>
 </ul>
 <h2 id="希尔伯特空间-内积空间-完备性-→Hilbert-空间"><a href="#希尔伯特空间-内积空间-完备性-→Hilbert-空间" class="headerlink" title="希尔伯特空间: 内积空间+完备性$→Hilbert$空间"></a>希尔伯特空间: 内积空间+完备性$→Hilbert$空间</h2><ul>
-<li>令复内积空间$V$由定义$||v||=&lt;v|v&gt;^{1/2}, \forall v \in V$赋范，由$d(v,w)=||v-w||=&lt;v-w|v-w&gt;^{1/2}$度量</li>
+<li>令复内积空间$V$由定义$||v||=<v|v>^{1/2}, \forall v \in V$赋范，由$d(v,w)=||v-w||=<v-w|v-w>^{1/2}$度量</li>
 <li>如果所有的柯西序列在$V$中都有极限，那么$V$相对于由内积导出的度量是完备的，我们就说$V$是一个希尔伯特(Hilbert)空间。</li>
 </ul>
 <hr>
@@ -508,7 +502,10 @@
     <a href="/2020/11/22/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%BA%94%E7%94%A8%E6%80%BB%E7%BB%93%E7%AF%87/" rel="prev" title="二叉树的应用总结篇">
       <i class="fa fa-chevron-left"></i> 二叉树的应用总结篇
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/12/%E7%9F%A9%E9%98%B5%E5%88%86%E6%9E%90-%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/" rel="next" title="矩阵分析-矩阵运算">
+      矩阵分析-矩阵运算 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
